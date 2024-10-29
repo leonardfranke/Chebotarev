@@ -1,5 +1,120 @@
 \documentclass{article}
 
+\usepackage[ngerman]{babel}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\usepackage[noabbrev,nameinlink, ngerman]{cleveref}
+
+\newtheorem{satz}{Satz}
+\newtheorem{lemma}[satz]{Lemma}
+\newtheorem{korollar}[satz]{Korollar}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\renewcommand{\det}{det\;}
+
+
+
 \begin{document}
+
+\begin{definition}
+    Seien $I := \{i_1,\dots, i_k\}$ und $J := \{j_1,\dots, j_k\}$ zwei Teilmengen von $\mathbb{Z}$ für $k \in \mathbb{N}^+$. Dann ist $M_{IJ} := (x^{ij})_{i \in I, j \in J}$. 
+\end{definition}
+
+\begin{lemma} \label{lemma:transpose}
+    \begin{equation*}
+        \det M_{IJ} = \det M_{JI}
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    \begin{align*}
+        \det M_{IJ} &= \det (x^{ij}) \\
+                    &= \det (x^{ji}) \\
+                    &= \det M_{JI}
+    \end{align*}
+\end{proof}
+
+\begin{lemma} \label{lemma:translation}
+    Sei $I + m := \{ i + m, i \in I\}$ für $m \in Z$. Dann gilt
+    \begin{equation*}
+        \det{} M_{I+m,J} = x^{m(j_1+\cdots +j_k)} \det M_{I,J}
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    Die Einträge der Matrix $M_{I+m,J}$ haben die Form 
+    \begin{equation*}
+        x^{(i+m)j} = x^{ij} \cdot x^{mj}
+    \end{equation*} für $i\in I, j\in J$.
+
+    Jeder Eintrag einer Spalte $j \in J$ enthält den Faktor $x^{mj}$. Aus der Multilinearität der Determinante folgt
+    \begin{align*}
+        \det M_{I+m,J}  &= \det (x^{ij} \cdot x^{mj}) \\ 
+                        &= \prod_{j \in J} x^{mj} \det (x^{ij}) \\ 
+                        &= \prod_{j \in J} x^{mj}  \det M_{I,J} \\
+                        &= x^{m(j_1+\cdots +j_k)} \det M_{I,J}
+    \end{align*}
+\end{proof}
+
+\begin{satz}
+    Seien $I,J \subseteq \mathbb{Z}$ und $m,n \in \mathbb{Z}$. Dann gilt
+    \begin{equation*}
+        \det{} M_{I+m,J+n} = x^{mnk} x^{m(j_1 +\cdots + j_k)} x^{n(i_1+\cdots +i_k)} \det{} M_{I,J}
+    \end{equation*}
+\end{satz}
+
+\begin{proof}
+    Aus \cref{lemma:transpose,lemma:translation} folgt direkt
+    \begin{align*}
+        \det{} M_{I+m,J+n}  &= x^{m(j_1 + n +\cdots + j_k + n)} \det{} M_{I,J+n} \\
+                            &= x^{m(j_1 +\cdots + j_k + kn)} \det{} M_{I,J+n} \\
+                            &= x^{mnk} x^{m(j_1 +\cdots + j_k)} \det{} M_{I,J+n} \\
+                            &= x^{mnk} x^{m(j_1 +\cdots + j_k)} \det{} M_{J+n,I} \\
+                            &= x^{mnk} x^{m(j_1 +\cdots + j_k)} x^{n(i_1+\cdots +i_k)} \det{} M_{J,I} \\
+                            &= x^{mnk} x^{m(j_1 +\cdots + j_k)} x^{n(i_1+\cdots +i_k)} \det{} M_{I,J} \\
+    \end{align*}
+\end{proof}
+
+\begin{satz}
+    Sei $aI := \{ a \cdot i, i \in I\}$ für $a \in Z$. Der Minor zu $I,J$ besitzt die Form  
+    \begin{equation*}
+        \det{} M_{I,J} = \beta_l x^{\alpha_l} + \cdots + \beta_0 x^{\alpha_0}.
+    \end{equation*} 
+    Der Minor zu $aI,bJ$ hat dann die Form
+    \begin{equation*}
+        \det{} M_{aI,bJ} =  \beta_l x^{ab \alpha_l} + \cdots + \beta_0 x^{ab \alpha_0}
+    \end{equation*}
+\end{satz}
+
+\begin{proof}
+    Die Exponenten $\alpha_k$ für $I,J$ haben die Form
+    \begin{equation*}
+        \alpha_k = \sum_{v,w \in V_k,W_k \subseteq I,J} vw.
+    \end{equation*}  
+    Die Exponenten $\alpha_k'$ für $aI,bJ$ entsprechend 
+    \begin{align*}
+        \alpha_k'   &= \sum_{v',w' \in V_k',W_k' \subseteq aI,bJ} v'w' \\
+                    &= \sum_{v,w \in V_k,W_k \subseteq I,J} avbw \\
+                    &= ab \sum_{v,w \in V_k,W_k \subseteq I,J} vw \\
+                    &= ab \alpha_k
+    \end{align*} 
+\end{proof}
+
+\begin{korollar}
+    Der Minor zu $I,J$ besitzt die Form  
+    \begin{equation*}
+        \det{} M_{I,J} = \beta_l x^{\alpha_l} + \cdots + \beta_0 x^{\alpha_0}.
+    \end{equation*} 
+    Der Minor zu $aI + m,bJ + n$ hat dann die Form
+    \begin{equation*}
+        \det{} M_{aI + m,bJ + n} = x^{mb(j_1+\cdots +j_k)} x^{na(i_1+\cdots +i_k)} \left( \beta_l x^{ab \alpha_l} + \cdots + \beta_0 x^{ab \alpha_0} \right)
+    \end{equation*}
+\end{korollar}
 
 \end{document}
