@@ -34,7 +34,6 @@
 \end{proof}
 
 \begin{lemma} \label{lemma:translation}
-    Sei $I + m := \{ i + m, i \in I\}$ für $m \in Z$. Dann gilt
     \begin{equation*}
         \det{} M_{I+m,J} = x^{m(j_1+\cdots +j_k)} \det M_{I,J}
     \end{equation*}
@@ -56,7 +55,6 @@
 \end{proof}
 
 \begin{satz}
-    Seien $I,J \subseteq \mathbb{Z}$ und $m,n \in \mathbb{Z}$. Dann gilt
     \begin{equation*}
         \det{} M_{I+m,J+n} = x^{mnk} x^{m(j_1 +\cdots + j_k)} x^{n(i_1+\cdots +i_k)} \det{} M_{I,J}
     \end{equation*}
@@ -75,7 +73,6 @@
 \end{proof}
 
 \begin{satz}
-    Sei $aI := \{ a \cdot i, i \in I\}$ für $a \in Z$. Dann gilt
     \begin{equation*}
         \left( \det{} M_{aI,bJ} \right) (x) = \left( \det{} M_{I,J} \right) (x^{ab})
     \end{equation*}
@@ -98,8 +95,7 @@
 \end{proof}
 
 \begin{korollar}
-    Sei $\det{} M_{I,J}(x) = p(x)$. Dann ist 
-    Der Minor zu $aI + m,bJ + n$ hat dann die Form
+    Sei $\det{} M_{I,J}(x) = p(x)$. Dann gilt
     \begin{equation*}
         \det{} M_{aI + m,bJ + n} = x^{mnk} x^{ma(j_1 +\cdots + j_k)} x^{nb(i_1+\cdots +i_k)} \left( \det{} M_{I,J} \right) (x^{ab})
     \end{equation*}

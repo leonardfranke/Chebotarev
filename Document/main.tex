@@ -4,6 +4,7 @@
 \usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage[unicode=true,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
  breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
@@ -19,13 +20,14 @@
 \renewcommand{\det}{det\;}
 \newcommand{\Modulo}{\mathbin\mathrm{mod}}
 \newcommand{\field}[2]{\mathbb{F}_{#1^#2}}
+\newcommand{\Count}{\mathrm{count}}
 
 
 \begin{document}
 
-\begin{definition}
-    Seien $I := \{i_1,\dots, i_k\}$ und $J := \{j_1,\dots, j_k\}$ zwei Teilmengen von $\mathbb{Z}$ für $k \in \mathbb{N}^+$. Dann ist $M_{IJ} := (x^{ij})_{i \in I, j \in J}$. 
-\end{definition}
+\include{sections/Mengenoperationen}
+
+\include{sections/Definitionen}
 
 \include{sections/LineareIndextransformationen}
 
