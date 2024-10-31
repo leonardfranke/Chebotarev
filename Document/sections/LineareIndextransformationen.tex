@@ -1,0 +1,114 @@
+\section{Lineare Indextransformationen}
+
+\begin{lemma} \label{lemma:det-polynom}
+    $\det M_{IJ} \in \field{p}{n}[X]$.
+\end{lemma}
+
+\begin{proof}
+    Wir beweisen diesen Satz mittels Induktion über die Größe der Submatrizen. 
+
+    Induktionsanfang: $|I| = |J| = 1$
+    \begin{equation*}
+        \det M_{IJ} = x^{i_1j_1} \in \field{p}{n}[X]
+    \end{equation*}
+
+    Induktionsschritt: $|I| = |J| = n+1$
+    \begin{equation*}
+        \det M_{IJ} = \sum_{k=1}^{n+1} \underbrace{(-1)^{kl} x^{i_kj_l}}_{\in \field{p}{n}[X]} \underbrace{\det M_{I\backslash i_k J \backslash j_l}}_{IV: \in \field{p}{n}[X]}
+    \end{equation*}
+    Aufgrund der Abgeschlossenheit von Polynomen bezüglich Addition und Multiplikation ist $\det M_{IJ}$ ebenfalls in $\field{p}{n}[X]$.
+\end{proof}
+
+\begin{lemma} \label{lemma:transpose}
+    \begin{equation*}
+        \det M_{IJ} = \det M_{JI}
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    \begin{align*}
+        \det M_{IJ} &= \det (x^{ij}) \\
+                    &= \det (x^{ji}) \\
+                    &= \det M_{JI}
+    \end{align*}
+\end{proof}
+
+\begin{lemma} \label{lemma:translation}
+    Sei $I + m := \{ i + m, i \in I\}$ für $m \in Z$. Dann gilt
+    \begin{equation*}
+        \det{} M_{I+m,J} = x^{m(j_1+\cdots +j_k)} \det M_{I,J}
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    Die Einträge der Matrix $M_{I+m,J}$ haben die Form 
+    \begin{equation*}
+        x^{(i+m)j} = x^{ij} \cdot x^{mj}
+    \end{equation*} für $i\in I, j\in J$.
+
+    Jeder Eintrag einer Spalte $j \in J$ enthält den Faktor $x^{mj}$. Aus der Multilinearität der Determinante folgt
+    \begin{align*}
+        \det M_{I+m,J}  &= \det (x^{ij} \cdot x^{mj}) \\ 
+                        &= \prod_{j \in J} x^{mj} \det (x^{ij}) \\ 
+                        &= \prod_{j \in J} x^{mj}  \det M_{I,J} \\
+                        &= x^{m(j_1+\cdots +j_k)} \det M_{I,J}
+    \end{align*}
+\end{proof}
+
+\begin{satz}
+    Seien $I,J \subseteq \mathbb{Z}$ und $m,n \in \mathbb{Z}$. Dann gilt
+    \begin{equation*}
+        \det{} M_{I+m,J+n} = x^{mnk} x^{m(j_1 +\cdots + j_k)} x^{n(i_1+\cdots +i_k)} \det{} M_{I,J}
+    \end{equation*}
+\end{satz}
+
+\begin{proof}
+    Aus \cref{lemma:transpose,lemma:translation} folgt direkt
+    \begin{align*}
+        \det{} M_{I+m,J+n}  &= x^{m(j_1 + n +\cdots + j_k + n)} \det{} M_{I,J+n} \\
+                            &= x^{m(j_1 +\cdots + j_k + kn)} \det{} M_{I,J+n} \\
+                            &= x^{mnk} x^{m(j_1 +\cdots + j_k)} \det{} M_{I,J+n} \\
+                            &= x^{mnk} x^{m(j_1 +\cdots + j_k)} \det{} M_{J+n,I} \\
+                            &= x^{mnk} x^{m(j_1 +\cdots + j_k)} x^{n(i_1+\cdots +i_k)} \det{} M_{J,I} \\
+                            &= x^{mnk} x^{m(j_1 +\cdots + j_k)} x^{n(i_1+\cdots +i_k)} \det{} M_{I,J} \\
+    \end{align*}
+\end{proof}
+
+\begin{satz}
+    Sei $aI := \{ a \cdot i, i \in I\}$ für $a \in Z$. Dann gilt
+    \begin{equation*}
+        \left( \det{} M_{aI,bJ} \right) (x) = \left( \det{} M_{I,J} \right) (x^{ab})
+    \end{equation*}
+\end{satz}
+
+\begin{proof}
+    Wir beweisen diesen Satz mittels Induktion über die Größe der Submatrizen. 
+
+    Induktionsanfang: $|I| = |J| = 1$
+    \begin{equation*}
+        \left( \det{} M_{aI,bJ} \right) (x) = x^{ai_1bj_1} = {x^{ab}}^{i_1j_1} = \left( \det{} M_{I,J} \right) (x^{ab})
+    \end{equation*}
+
+    Induktionsschritt: $|I| = |J| = n+1$
+    \begin{align*}
+        \left( \det{} M_{aI,bJ} \right) (x) &= \sum_{k=1}^{n+1} (-1)^{kl} x^{ai_kbj_l} \left( \det M_{aI\backslash ai_k, bJ \backslash bj_l} \right) (x) \\
+                                            &= \sum_{k=1}^{n+1} (-1)^{kl} {x^{ab}}^{i_kj_l} \left( \det M_{I\backslash i_k, J \backslash j_l} \right) (x^{ab}) \\
+                                            &= \left( \det{} M_{I,J} \right) (x^{ab})
+    \end{align*}
+\end{proof}
+
+\begin{korollar}
+    Sei $\det{} M_{I,J}(x) = p(x)$. Dann ist 
+    Der Minor zu $aI + m,bJ + n$ hat dann die Form
+    \begin{equation*}
+        \det{} M_{aI + m,bJ + n} = x^{mnk} x^{ma(j_1 +\cdots + j_k)} x^{nb(i_1+\cdots +i_k)} \left( \det{} M_{I,J} \right) (x^{ab})
+    \end{equation*}
+\end{korollar}
+
+\begin{proof}
+    \begin{align*}
+        \left( \det{} M_{aI + m,bJ + n} \right) (x) &= x^{mnk} x^{m(aj_1 +\cdots + aj_k)} x^{n(bi_1+\cdots +bi_k)} \left( \det{} M_{aI,bJ} \right) (x) \\
+                                                    &= x^{mnk} x^{ma(j_1 +\cdots + j_k)} x^{nb(i_1+\cdots +i_k)} \left( \det{} M_{aI,bJ} \right) (x) \\
+                                                    &= x^{mnk} x^{ma(j_1 +\cdots + j_k)} x^{nb(i_1+\cdots +i_k)} \left( \det{} M_{I,J} \right) (x^{ab}) \\
+    \end{align*}
+\end{proof}
