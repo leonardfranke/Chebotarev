@@ -14,7 +14,7 @@
 
     Induktionsschritt: $|I| = |J| = n+1$
     \begin{equation*}
-        \det M_{IJ} = \sum_{k=1}^{n+1} \underbrace{(-1)^{kl} x^{i_kj_l}}_{\in \field{p}{n}[X]} \underbrace{\det M_{I\backslash i_k J \backslash j_l}}_{IV: \in \field{p}{n}[X]}
+        \det M_{IJ} = \sum_{k=1}^{n+1} \underbrace{(-1)^{k+l} x^{i_kj_l}}_{\in \field{p}{n}[X]} \underbrace{\det M_{I\backslash i_k J \backslash j_l}}_{\mathrm{IV:}\; \in \field{p}{n}[X]}
     \end{equation*}
     Aufgrund der Abgeschlossenheit von Polynomen bezüglich Addition und Multiplikation ist $\det M_{IJ}$ ebenfalls in $\field{p}{n}[X]$.
 \end{proof}
@@ -27,8 +27,9 @@
 
 \begin{proof}
     \begin{align*}
-        \det M_{IJ} &= \det (x^{ij}) \\
-                    &= \det (x^{ji}) \\
+        \det M_{IJ} &= \det (x^{ij})_{\substack{i\in I \\ j\in J}} \\
+                    &= \det \left( (x^{ji})_{\substack{j\in J \\ i\in I}} \right)^T \\
+                    &= \det \left( M_{JI} \right)^T \\
                     &= \det M_{JI}
     \end{align*}
 \end{proof}
@@ -88,23 +89,22 @@
 
     Induktionsschritt: $|I| = |J| = n+1$
     \begin{align*}
-        \left( \det{} M_{aI,bJ} \right) (x) &= \sum_{k=1}^{n+1} (-1)^{kl} x^{ai_kbj_l} \left( \det M_{aI\backslash ai_k, bJ \backslash bj_l} \right) (x) \\
-                                            &= \sum_{k=1}^{n+1} (-1)^{kl} {x^{ab}}^{i_kj_l} \left( \det M_{I\backslash i_k, J \backslash j_l} \right) (x^{ab}) \\
+        \left( \det{} M_{aI,bJ} \right) (x) &= \sum_{k=1}^{n+1} (-1)^{k+l} x^{ai_kbj_l} \left( \det M_{aI\backslash ai_k, bJ \backslash bj_l} \right) (x) \\
+                                            &= \sum_{k=1}^{n+1} (-1)^{k+l} {x^{ab}}^{i_kj_l} \left( \det M_{I\backslash i_k, J \backslash j_l} \right) (x^{ab}) \\
                                             &= \left( \det{} M_{I,J} \right) (x^{ab})
     \end{align*}
 \end{proof}
 
 \begin{korollar}
-    Sei $\det{} M_{I,J}(x) = p(x)$. Dann gilt
     \begin{equation*}
-        \det{} M_{aI + m,bJ + n} = x^{mnk} x^{ma(j_1 +\cdots + j_k)} x^{nb(i_1+\cdots +i_k)} \left( \det{} M_{I,J} \right) (x^{ab})
+        \left( \det{} M_{aI + m,bJ + n} \right) (x) = x^{mnk} x^{ma(j_1 +\cdots + j_k)} x^{nb(i_1+\cdots +i_k)} \left( \det{} M_{I,J} \right) (x^{ab})
     \end{equation*}
 \end{korollar}
 
 \begin{proof}
     \begin{align*}
-        \left( \det{} M_{aI + m,bJ + n} \right) (x) &= x^{mnk} x^{m(aj_1 +\cdots + aj_k)} x^{n(bi_1+\cdots +bi_k)} \left( \det{} M_{aI,bJ} \right) (x) \\
-                                                    &= x^{mnk} x^{ma(j_1 +\cdots + j_k)} x^{nb(i_1+\cdots +i_k)} \left( \det{} M_{aI,bJ} \right) (x) \\
-                                                    &= x^{mnk} x^{ma(j_1 +\cdots + j_k)} x^{nb(i_1+\cdots +i_k)} \left( \det{} M_{I,J} \right) (x^{ab}) \\
+        \left( \det{} M_{aI + m,bJ + n} \right) (x) &= x^{mnk} x^{m(bj_1 +\cdots + bj_k)} x^{n(ai_1+\cdots +ai_k)} \left( \det{} M_{aI,bJ} \right) (x) \\
+                                                    &= x^{mnk} x^{mb(j_1 +\cdots + j_k)} x^{na(i_1+\cdots +i_k)} \left( \det{} M_{aI,bJ} \right) (x) \\
+                                                    &= x^{mnk} x^{mb(j_1 +\cdots + j_k)} x^{na(i_1+\cdots +i_k)} \left( \det{} M_{I,J} \right) (x^{ab}) \\
     \end{align*}
 \end{proof}

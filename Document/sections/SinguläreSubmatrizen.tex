@@ -3,13 +3,13 @@
 \begin{lemma} \label{lemma:equal-columns}
     Seien $a \in \field{p}{n}, o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
     Falls
-    \begin{equation*}
+    \begin{equation} \label{equation:all-equal}
         \forall \; i, i' \in I, i \neq i': i \equiv i' \pmod v
-    \end{equation*}
+    \end{equation}
     und
-    \begin{equation*}
+    \begin{equation} \label{equation:two-equal}
         \exists \; j, j' \in J, j \neq j':  j \equiv j' \pmod w
-    \end{equation*}
+    \end{equation}
     gelten, folgt
     \begin{equation*}
         (\det M_{IJ})(a) = 0
@@ -57,22 +57,11 @@
         \end{pmatrix}
     \end{equation*}
 \end{proof}
-
+{
+\Crefname{equation}{Bedingung}{Bedingungen}
 \begin{satz}
     Seien $a \in \field{p}{n}, o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
-    
-    Sei außerdem 
-    \begin{gather*}
-        I' = \{i_{l_1},\dots,i_{l_\gamma}\} \subseteq I \\
-        \text{mit} \quad i_{l_1} \equiv i_{l_2} \equiv \cdots \equiv i_{l_\gamma} \pmod v
-    \end{gather*}
-    
-    Falls gilt 
-    \begin{align*}
-        & \forall J' \subseteq J \quad \text{mit} \quad |J'|= \gamma \\ 
-        & \exists \; \alpha,\beta \in J' \quad \text{mit} \quad \alpha \equiv \beta \pmod w
-    \end{align*}
-    dann folgt
+    Falls ein $I' \subseteq I$ mit $|I'| = \gamma \geq 1$ existiert, dass \Cref{equation:all-equal} erfüllt und alle $J' \subseteq J$ mit $|J'| = \gamma$ \Cref{equation:two-equal} erfüllen, folgt
     \begin{equation*}
         (\det M_{IJ})(a) = 0
     \end{equation*}
@@ -83,5 +72,7 @@
 \begin{equation*}
     (\det M_{IJ})(a) = \left( \sum_{J':|J'| = \gamma} (-1)^{\sum I' + \sum J'} \left( \det M_{I'J'} \cdot \det M_{I\backslash I',J\backslash J'} \right) \right)(a)
 \end{equation*}
-Auf die Terme $\det M_{I'J'}$ lässt sich \Cref{lemma:equal-columns} anwenden. Somit ist jeder Summand gleich $0$ und die Aussage folgt.
+Da $I'$ und alle $J'$ die \Cref{equation:all-equal,equation:two-equal} erfüllen, kann \Cref{lemma:equal-columns} auf die Terme $\det M_{I'J'}$ angewendet werden. Somit ist jeder Summand gleich $0$ und die Aussage folgt.
 \end{proof}
+
+}
