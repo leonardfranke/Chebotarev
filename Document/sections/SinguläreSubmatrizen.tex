@@ -1,0 +1,87 @@
+\section{Singuläre Submatrizen}
+
+\begin{lemma} \label{lemma:equal-columns}
+    Seien $a \in \field{p}{n}, o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
+    Falls
+    \begin{equation*}
+        \forall \; i, i' \in I, i \neq i': i \equiv i' \pmod v
+    \end{equation*}
+    und
+    \begin{equation*}
+        \exists \; j, j' \in J, j \neq j':  j \equiv j' \pmod w
+    \end{equation*}
+    gelten, folgt
+    \begin{equation*}
+        (\det M_{IJ})(a) = 0
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    Wir betrachten $j,j' \in J$, welche die obige Bedingung erfüllen und zeigen, dass die dazugehörigen Spalten in $M_{IJ}$ linear abhängig sind. Seien $j = (c + bw)$, $j' = (c + b'w)$ und $I = \{(d+l_1v),\dots,(d+l_kv)\}$. Die Spalten zu $j$ und $j'$ haben die Form
+    \begin{align*}
+        \begin{pmatrix}
+            a^{i_1j} & a^{i_1j'} \\
+            \vdots & \vdots \\
+            a^{i_kj} & a^{i_kj'}
+        \end{pmatrix} &=
+        \begin{pmatrix}
+            a^{(d+l_1v)(c + bw)} & a^{(d+l_1v)(c + b'w)} \\
+            \vdots & \vdots \\
+            a^{(d+l_kv)(c + bw)} & a^{(d+l_kv)(c + b'w)}
+        \end{pmatrix} \\
+        &= \begin{pmatrix}
+            a^{dc + dbw +l_1vc + l_1bvw} & a^{dc + db'w +l_1vc + l_1b'vw} \\
+            \vdots & \vdots \\
+            a^{dc + dbw +l_kvc + l_kbvw} & a^{dc + db'w +l_kvc + l_kb'vw}
+        \end{pmatrix} \\
+        &= \begin{pmatrix}
+            a^{dc + dbw +l_1vc + l_1bvw} & a^{dc + db'w +l_1vc + l_1b'vw} \\
+            \vdots & \vdots \\
+            a^{dc + dbw +l_kvc + l_kbvw} & a^{dc + db'w +l_kvc + l_kb'vw}
+        \end{pmatrix} \\
+    \end{align*}
+    Die konstanten Terme $a^{dc + dbw}$ und $a^{dc + db'w}$ können aus den Spalten faktorisiert werden, sodass verbleiben
+    \begin{equation*}
+        \begin{pmatrix}
+            a^{l_1vc} {a^{vw}}^{l_1b} & a^{l_1vc} {a^{vw}}^{l_1b'} \\
+            \vdots & \vdots \\
+            a^{l_kvc} {a^{vw}}^{l_kb} & a^{l_kvc} {a^{vw}}^{l_kb'}
+        \end{pmatrix}
+    \end{equation*}
+    Da $a^{vw} = a^{o} = 1$ gilt, verbleiben die gleichen Spalten.
+    \begin{equation*}
+        \begin{pmatrix}
+            a^{l_1vc} & a^{l_1vc} \\
+            \vdots & \vdots \\
+            a^{l_kvc} & a^{l_kvc}
+        \end{pmatrix}
+    \end{equation*}
+\end{proof}
+
+\begin{satz}
+    Seien $a \in \field{p}{n}, o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
+    
+    Sei außerdem 
+    \begin{gather*}
+        I' = \{i_{l_1},\dots,i_{l_\gamma}\} \subseteq I \\
+        \text{mit} \quad i_{l_1} \equiv i_{l_2} \equiv \cdots \equiv i_{l_\gamma} \pmod v
+    \end{gather*}
+    
+    Falls gilt 
+    \begin{align*}
+        & \forall J' \subseteq J \quad \text{mit} \quad |J'|= \gamma \\ 
+        & \exists \; \alpha,\beta \in J' \quad \text{mit} \quad \alpha \equiv \beta \pmod w
+    \end{align*}
+    dann folgt
+    \begin{equation*}
+        (\det M_{IJ})(a) = 0
+    \end{equation*}
+\end{satz}
+
+\begin{proof}
+    Zu Bestimmung der Determinante führen wir eine Zeilenentwicklung über die Indizes $I'$ durch. 
+\begin{equation*}
+    (\det M_{IJ})(a) = \left( \sum_{J':|J'| = \gamma} (-1)^{\sum I' + \sum J'} \left( \det M_{I'J'} \cdot \det M_{I\backslash I',J\backslash J'} \right) \right)(a)
+\end{equation*}
+Auf die Terme $\det M_{I'J'}$ lässt sich \Cref{lemma:equal-columns} anwenden. Somit ist jeder Summand gleich $0$ und die Aussage folgt.
+\end{proof}
