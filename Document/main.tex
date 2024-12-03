@@ -1,9 +1,12 @@
 \documentclass{article}
 
+\usepackage{xparse}
+\usepackage{slashbox}
 \usepackage[ngerman]{babel}
 \usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{array}
 \usepackage{mathtools}
 \usepackage[unicode=true,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
@@ -19,14 +22,18 @@
 
 \renewcommand{\det}{\mathrm{det}\;}
 \newcommand{\Modulo}{\mathbin\mathrm{mod}}
-\newcommand{\field}[2]{\mathbb{F}_{#1^#2}}
+\NewDocumentCommand{\field}{m o}{%
+  \mathbb{F}_{#1\IfValueT{#2}{^{#2}}}%
+}
 
 \begin{document}
 
 \include{sections/Definitionen}
 
-\include{sections/LineareIndextransformationen}
+\include{sections/Indextransformationen}
 
 \include{sections/SinguläreSubmatrizen}
+
+\include{sections/SpezielleIndexmengen}
 
 \end{document}

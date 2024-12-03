@@ -1,7 +1,7 @@
 \section{Singuläre Submatrizen}
 
 \begin{lemma} \label{lemma:equal-columns}
-    Seien $a \in \field{p}{n}, o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
+    Seien $a \in \field{p}[n], o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
     Falls
     \begin{equation} \label{equation:all-equal}
         \forall \; i, i' \in I, i \neq i': i \equiv i' \pmod v
@@ -57,10 +57,13 @@
         \end{pmatrix}
     \end{equation*}
 \end{proof}
+
+Für beliebige $A \subseteq \mathbb{Z}$ und $a \in \mathbb{Z}$ folgt aus $|A| > a$, dass zwei Elemente $i,j \in A$ mit $i \equiv j \pmod a$ existieren müssen. Zusammen mit \Cref{lemma:equal-columns} bedeutet dies, dass für zwei Mengen $I,J \subseteq \mathbb{Z}$ mit $|I|=|J| > ord(a)$ immer $(\det M_{IJ})(a) = 0$ gilt. 
+
 {
 \Crefname{equation}{Bedingung}{Bedingungen}
 \begin{satz}
-    Seien $a \in \field{p}{n}, o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
+    Seien $a \in \field{p}[n], o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
     Falls ein $I' \subseteq I$ mit $|I'| = \gamma \geq 1$ existiert, dass \Cref{equation:all-equal} erfüllt und alle $J' \subseteq J$ mit $|J'| = \gamma$ \Cref{equation:two-equal} erfüllen, folgt
     \begin{equation*}
         (\det M_{IJ})(a) = 0
@@ -74,5 +77,8 @@
 \end{equation*}
 Da $I'$ und alle $J'$ die \Cref{equation:all-equal,equation:two-equal} erfüllen, kann \Cref{lemma:equal-columns} auf die Terme $\det M_{I'J'}$ angewendet werden. Somit ist jeder Summand gleich $0$ und die Aussage folgt.
 \end{proof}
-
 }
+
+Spezialfall:
+
+Sei $I=\{0,\dots,k\}$ und $J=\{j_i,\dots,j_k\} \subseteq \mathbb{Z}$. Dann entspricht $M_{IJ}$ der Vandermondematrix $V_{(x^{j_1},\dots,x^{j_k})}$ und die Determinante $\det M_{IJ} = \prod_{j_k<j_l \in J} (x^{j_k} - x^{j_l})$. Somit ist $(\det M_{IJ})(a) = 0$ genau dann, wenn zwei Exponenten $j_k,j_l \in J$ mit $j_k \equiv j_l \pmod{order(a)}$ existieren.

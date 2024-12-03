@@ -1,7 +1,7 @@
-\section{Lineare Indextransformationen}
+\section{Indextransformationen}
 
 \begin{lemma} \label{lemma:det-polynom}
-    $\det M_{IJ} \in \field{p}{n}[X]$.
+    $\det M_{IJ} \in \field{p}[n][X]$.
 \end{lemma}
 
 \begin{proof}
@@ -9,14 +9,14 @@
 
     Induktionsanfang: $|I| = |J| = 1$
     \begin{equation*}
-        \det M_{IJ} = x^{i_1j_1} \in \field{p}{n}[X]
+        \det M_{IJ} = x^{i_1j_1} \in \field{p}[n][X]
     \end{equation*}
 
     Induktionsschritt: $|I| = |J| = n+1$
     \begin{equation*}
-        \det M_{IJ} = \sum_{k=1}^{n+1} \underbrace{(-1)^{k+l} x^{i_kj_l}}_{\in \field{p}{n}[X]} \underbrace{\det M_{I\backslash i_k J \backslash j_l}}_{\mathrm{IV:}\; \in \field{p}{n}[X]}
+        \det M_{IJ} = \sum_{k=1}^{n+1} \underbrace{(-1)^{k+l} x^{i_kj_l}}_{\in \field{p}[n][X]} \underbrace{\det M_{I\backslash i_k J \backslash j_l}}_{\mathrm{IV:}\; \in \field{p}[n][X]}
     \end{equation*}
-    Aufgrund der Abgeschlossenheit von Polynomen bezüglich Addition und Multiplikation ist $\det M_{IJ}$ ebenfalls in $\field{p}{n}[X]$.
+    Aufgrund der Abgeschlossenheit von Polynomen bezüglich Addition und Multiplikation ist $\det M_{IJ}$ ebenfalls in $\field{p}[n][X]$.
 \end{proof}
 
 \begin{lemma} \label{lemma:transpose}
@@ -33,6 +33,8 @@
                     &= \det M_{JI}
     \end{align*}
 \end{proof}
+
+\subsection{Lineare Indextransformationen}
 
 \begin{lemma} \label{lemma:translation}
     \begin{equation*}

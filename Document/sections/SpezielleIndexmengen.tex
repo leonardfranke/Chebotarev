@@ -1,0 +1,123 @@
+\section{Spezielle Indexmengen}
+
+\newcolumntype{C}{>{$}c<{$}}
+
+In diesem Kapitel wollen wir spezielle Indexmengen betrachten und Bedingungen aufstellen, wann die Submatrix $M_{IJ}$ für ein $a \in \field{p}[n]$ invertierbar ist. Wir betrachten zunächst den allgemeinen Fall für $|I| = |J| = 3$. Seien $I = \{0, \alpha, \beta\}$ und $J = \{0, \gamma, \delta\}$. Dann besitzt $M_{IJ}$ die Form 
+\begin{equation*}
+    \begin{pmatrix}
+        1 & 1 & 1 \\
+        1 & x^{\alpha\gamma} & x^{\beta\gamma} \\
+        1 & x^{\alpha\delta} & x^{\beta\delta}
+    \end{pmatrix}.
+\end{equation*}
+
+Mithilfe von Zeilenumformungen und anschließender Spaltenentwicklung ergibt sich die Determinante wie folgt:
+
+\begin{align*}
+    \det \begin{pmatrix}
+        1 & 1 & 1 \\
+        1 & x^{\alpha\gamma} & x^{\beta\gamma} \\
+        1 & x^{\alpha\delta} & x^{\beta\delta}
+    \end{pmatrix} 
+    &= \det \begin{pmatrix}
+        1 & 1 & 1 \\
+        0 & x^{\alpha\gamma} -1 & x^{\beta\gamma} -1 \\
+        0 & x^{\alpha\delta} -1 & x^{\beta\delta} -1
+    \end{pmatrix} \\
+    &= \det \begin{pmatrix}
+        x^{\alpha\gamma} -1 & x^{\beta\gamma} -1 \\
+        x^{\alpha\delta} -1 & x^{\beta\delta} -1
+    \end{pmatrix} \\
+    &= (x^{\alpha\gamma} -1)(x^{\beta\delta} -1) - (x^{\alpha\delta} -1)(x^{\beta\gamma} -1)
+\end{align*}
+
+Für ein $a \in \field{p}[n]$ ist die Submatrix $M_{IJ}$ somit genau dann nicht invertierbar, falls $a$ die Gleichung $(x^{\alpha\gamma} -1)(x^{\beta\delta} -1) = (x^{\alpha\delta} -1)(x^{\beta\gamma} -1)$ löst. Da diese Gleichung noch sehr allgemein ist, setzen wir noch konkreter $I = \{0,1,3\}$. Dadurch reduziert sich die Bedingung zu
+
+\begin{align}
+        & (x^{\gamma} -1)(x^{3\delta} -1) = (x^{\delta} -1)(x^{3\gamma} -1) \nonumber \\
+    \iff & \frac{(x^{3\delta} -1)}{(x^{\delta} -1)} = \frac{(x^{3\gamma} -1)}{(x^{\gamma} -1)} \nonumber \\
+    \iff & {x^\delta}^2 + x^{\delta} + 1 = {x^{\gamma}}^2 + x^{\gamma} + 1 \nonumber \\
+    \iff & {x^\delta}^2 + x^{\delta} = {x^{\gamma}}^2 + x^{\gamma}. \label{equation:013}
+\end{align}
+
+Anders formuliert sind nun zwei Elemente $v_1 = a^\delta$ und $v_2 = a^\gamma$ gesucht, die $x^2 + x = m$ für ein festes $m \in \field{p}[n]$ lösen. Abhängig von der Charakteristik des Körpers existieren zwei unterschiedliche Lösungsformeln.
+
+\begin{equation*}
+    v_{1,2} = \begin{cases}
+        -2^{-1} \pm \sqrt{2^{-2} + m}                                   & \text{falls } \mathrm{char}(\field{p}[n]) \neq 2 \\  
+        \sum_{k=1}^{n-1} m^{2^j}(\sum_{l=0}^{k-1} u^{2^k}),\quad v_1 + 1 & \text{sonst}
+    \end{cases} 
+\end{equation*}
+
+Sofern $v_1,v_2 \neq 0$ sind, existieren für jeden Erzeuger $a \in \field{p}[n]$ Exponenten $\gamma$ und $\delta$ mit $v_1 = a^\gamma$ und $v_2 = a^\delta$. Für diese Erzeuger ist dann die \Cref{equation:013} erfüllt und $M_{IJ}$ nicht invertierbar. 
+
+Im Folgenden betrachten wir ein Beispiel für den Körper $\field{11}$, wobei $-2^{-1} = -6 = 5$ und $2^{-2} = 3$ gilt. In \Cref{table:sol_013F11} sind für jedes 
+
+
+{\renewcommand{\arraystretch}{1.5}
+\begin{table}[]
+    \centering
+    \begin{tabular}{|C|C|C|C|C|C|C|C|C|C|C|C|C}
+    \hline
+    m          & 0    & 1   & 2   & 3 & 4 & 5 & 6   & 7  & 8   & 9   & 10 \\
+    \hline
+    \sqrt{3+m} & 5    & 2   & 4   & - & - & - & 3   & -  & 0   & 1   & -  \\
+    \hline
+    v_{1,2} = 5 \pm \sqrt{3+m}   & 10,0 & 3,7 & 9,1 & - & - & - & 8,2 & -  & 5,5 & 6,4 & -  \\
+    \hline
+    \end{tabular}
+    \caption{Lösungen $v_{1,2}$ zu $x^2 + x = m$ für festes $m \in \field{11}$.} \label{table:sol_013F11}
+\end{table}
+}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|C|C|C|C|C|C|C|C|C|C|C|C|}
+    \hline
+    \text{\backslashbox{a}{i}} & 0 & 1  & 2 & 3 & 4 & 5  & 6 & 7 & 8 & 9 & 10 \\ \hline
+    1  & 1 & 1  &   &   &   &    &   &   &   &   &   \\ \hline
+    2  & 1 & 2  & 4 & 8 & 5 & 10 & 9 & 7 & 3 & 6 & 1 \\ \hline
+    3  & 1 & 3  & 9 & 5 & 4 & 1  &   &   &   &   &   \\ \hline
+    4  & 1 & 4  & 5 & 9 & 3 & 1  &   &   &   &   &   \\ \hline
+    5  & 1 & 5  & 3 & 4 & 9 & 1  &   &   &   &   &   \\ \hline
+    6  & 1 & 6  & 3 & 7 & 9 & 10 & 5 & 8 & 4 & 2 & 1 \\ \hline
+    7  & 1 & 7  & 5 & 2 & 3 & 10 & 4 & 6 & 9 & 8 & 1 \\ \hline
+    8  & 1 & 8  & 9 & 6 & 4 & 10 & 3 & 2 & 5 & 7 & 1 \\ \hline
+    9  & 1 & 9  & 4 & 3 & 5 & 1  &   &   &   &   &   \\ \hline
+    10 & 1 & 10 & 1 &   &   &    &   &   &   &   &   \\ \hline
+    \end{tabular}
+    \caption{Alle von einem $a \in \field{11}$ erzeugten Untergruppen.} \label{table:subgroupsF11}
+\end{table}
+
+{\renewcommand{\arraystretch}{1.5}
+\begin{table}[]
+    \centering
+    \begin{tabular}{|C|C|C|C|C|C|C|C|C|}
+    \hline
+    m               & 0 & 1 & o & o + 1 & o^2 & o^2 + 1 & o^2 + o  & o^2 + o + 1 \\
+    \hline
+    \mathrm{Tr}(m)  & 0 & 1 & 0 & 1     & 0   & 1       & 0        & 1 \\
+    \hline
+    v_1         & 0 & - & o^2 & - & o^2 + o & - & o & - \\
+    \hline
+    \end{tabular}
+    \caption{Lösungen $v_1$ zu $x^2 + x = m$ für festes $m \in \field{2}[3]$.} \label{table:sol_013F2_3}
+\end{table}
+}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|C|C|C|C|C|C|C|C|C|C|C|C|}
+    \hline
+    \text{\backslashbox{i}{a}}& 1 & o       & o+1     & o^2     & o^2 + 1 & o^2 + o & o^2 + o + 1 \\ \hline
+    0 & 1 & 1       & 1       & 1       & 1       & 1       & 1           \\ \hline
+    1 & 1 & o       & o+1     & o^2     & o^2+1   & o^2+o   & o^2+o+1     \\ \hline
+    2 &   & o^2     & o^2+1   & o^2+o   & o^2+o+1 & o       & o+1         \\ \hline
+    3 &   & o+1     & o^2     & o^2+1   & o^2+o   & o^2+o+1 & o           \\ \hline
+    4 &   & o^2+o   & o^2+o+1 & o       & o+1     & o^2     & o^2+1       \\ \hline
+    5 &   & o^2+o+1 & o       & o+1     & o^2     & o^2+1   & o^2+o       \\ \hline
+    6 &   & o^2+1   & o^2+o   & o^2+o+1 & o       & o+1     & o^2         \\ \hline
+    7 &   & 1       & 1       & 1       & 1       & 1       & 1           \\ \hline
+    \end{tabular}
+    \caption{Alle von einem $a \in \field{2}[3]$ erzeugten Untergruppen.} \label{table:subgroupsF2_3}
+\end{table}
