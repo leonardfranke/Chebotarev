@@ -1,5 +1,7 @@
 \documentclass{article}
 
+\usepackage{comment}
+\usepackage{todonotes}
 \usepackage{xparse}
 \usepackage{slashbox}
 \usepackage[ngerman]{babel}
@@ -20,7 +22,14 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 
+\newcolumntype{C}{>{$}c<{$}}
+
 \renewcommand{\det}{\mathrm{det}\;}
+\NewDocumentCommand{\ord}{m o}{%
+ \mathrm{ord}_{\IfValueT{#2}{{#2}}}(#1)%
+}
+\newcommand{\charac}{\mathrm{char}}
+\newcommand{\Tr}{\mathrm{Tr}}
 \newcommand{\Modulo}{\mathbin\mathrm{mod}}
 \NewDocumentCommand{\field}{m o}{%
   \mathbb{F}_{#1\IfValueT{#2}{^{#2}}}%
@@ -28,12 +37,25 @@
 
 \begin{document}
 
+\include{sections/Einleitung}
+
+\include{sections/Grundlagen}
+
 \include{sections/Definitionen}
 
 \include{sections/Indextransformationen}
 
+\todo{Graph mit vollständig Bipartiten Untergraphen konstruieren und erläutern, Isomorphismus über das inverse Element erläutern}
+
 \include{sections/SinguläreSubmatrizen}
 
+\todo{Maximales Gamma bestimmen, Abschätzung Mächtigkeit zu Partition}
+
 \include{sections/SpezielleIndexmengen}
+
+\bibliographystyle{plain}
+\bibliography{ref}
+
+\listoftodos
 
 \end{document}

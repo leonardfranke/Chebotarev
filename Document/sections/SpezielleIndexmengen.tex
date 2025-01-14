@@ -1,8 +1,17 @@
 \section{Spezielle Indexmengen}
 
-\newcolumntype{C}{>{$}c<{$}}
 
-In diesem Kapitel wollen wir spezielle Indexmengen betrachten und Bedingungen aufstellen, wann die Submatrix $M_{IJ}$ für ein $a \in \field{p}[n]$ invertierbar ist. Wir betrachten zunächst den allgemeinen Fall für $|I| = |J| = 3$. Seien $I = \{0, \alpha, \beta\}$ und $J = \{0, \gamma, \delta\}$. Dann besitzt $M_{IJ}$ die Form 
+In diesem Kapitel wollen wir spezielle Indexmengen betrachten und Bedingungen aufstellen, wann die Submatrix $M_{IJ}$ für ein $a \in \field{p}[n]$ invertierbar ist. 
+
+Wir betrachten zunächst allgemeine $I,J \subseteq \mathbb{Z}$ mit $|I| > \ord{a}$. Dann existieren stets zwei Elemente $i \ne i' \in I$ mit $i \equiv i' \pmod{o}$. Da alle Bedingungen von \Cref{lemma:equal-columns} erfüllt sind, folgt direkt $(\det M_{IJ})(a) = 0$. Es genügt somit Indexmengen zu untersuchen, deren Mächtigkeit kleiner als eine gewählte (Gruppen-)Ordnung ist.
+
+Sei als nächstes $I = \{0,\dots,k-1\}$ und $J$ wieder beliebig. Die Matrix $M_{IJ}$ entspricht dann der Vandermondematrix $V_{(x^{j_1},\dots,x^{j_k})}$, deren Determinanten
+\begin{equation*}
+    \det V_{(x^{j_1},\dots,x^{j_k})} = \prod_{1\leq v<w\leq k} (x^{j_v} - x^{j_w})
+\end{equation*}
+bekannt ist. Damit $(\det M_{IJ})(a) = 0$ gilt, müssen wieder zwei Indizes existieren, deren Differenz ein Vielfaches der Ordnung von $a$ entspricht. Falls die Mächtigkeit von $J$ größer als diese Ordnung ist, müssen, wie vorher erläutert, diese Elemente existieren.
+
+Als nächstes betrachten wir den speziellen Fall für $|I| = |J| = 3$. Seien $I = \{0, \alpha, \beta\}$ und $J = \{0, \gamma, \delta\}$. Dann besitzt $M_{IJ}$ die Form 
 \begin{equation*}
     \begin{pmatrix}
         1 & 1 & 1 \\
@@ -42,17 +51,34 @@ Für ein $a \in \field{p}[n]$ ist die Submatrix $M_{IJ}$ somit genau dann nicht 
 
 Anders formuliert sind nun zwei Elemente $v_1 = a^\delta$ und $v_2 = a^\gamma$ gesucht, die $x^2 + x = m$ für ein festes $m \in \field{p}[n]$ lösen. Abhängig von der Charakteristik des Körpers existieren zwei unterschiedliche Lösungsformeln.
 
-\begin{equation*}
-    v_{1,2} = \begin{cases}
-        -2^{-1} \pm \sqrt{2^{-2} + m}                                   & \text{falls } \mathrm{char}(\field{p}[n]) \neq 2 \\  
-        \sum_{k=1}^{n-1} m^{2^j}(\sum_{l=0}^{k-1} u^{2^k}),\quad v_1 + 1 & \text{sonst}
-    \end{cases} 
-\end{equation*}
+\begin{lemma}
+    Sei $\charac(\field{p}[n]) \neq 2$. Die quadratische Gleichung $x^2 + x = m$ ist genau dann lösbar, wenn die Wurzel $\sqrt{2^{-2} + m}$ existiert. Die Lösungen lauten dann
+    \begin{equation*}
+        v_{1,2} = -2^{-1} \pm \sqrt{2^{-2} + m}.
+    \end{equation*}
+\end{lemma}
+
+\begin{lemma}[{\cite{QuadEquChar2}}]
+    Sei $\charac(\field{p}[n]) = 2$. Die quadratische Gleichung $x^2 + x = m$ ist genau dann lösbar, wenn $\Tr(m) = 0$ gilt. Die erste Lösung lautet dann
+    \begin{equation*}
+        v_1 = 1 + \sum_{k=1}^{n-1} m^{2^k}(\sum_{l=0}^{k-1} u^{2^l})
+    \end{equation*}
+     für ein beliebiges $u \in \field{p}[n]$ mit $\Tr(u) = 1$. Die zweite Lösung ist $v_2 = v_1 + 1$.
+\end{lemma}
 
 Sofern $v_1,v_2 \neq 0$ sind, existieren für jeden Erzeuger $a \in \field{p}[n]$ Exponenten $\gamma$ und $\delta$ mit $v_1 = a^\gamma$ und $v_2 = a^\delta$. Für diese Erzeuger ist dann die \Cref{equation:013} erfüllt und $M_{IJ}$ nicht invertierbar. 
 
-Im Folgenden betrachten wir ein Beispiel für den Körper $\field{11}$, wobei $-2^{-1} = -6 = 5$ und $2^{-2} = 3$ gilt. In \Cref{table:sol_013F11} sind für jedes 
+Im Folgenden betrachten wir ein Beispiel für den Körper $\field{11}$, wobei $-2^{-1} = -6 = 5$ und $2^{-2} = 3$ gilt. In \Cref{table:sol_013F11} ist für jedes $m$ die Wurzel $\sqrt{3 + m}$ angegeben. Im Allgemeinen existieren diese, falls $p \neq 2$ gilt, für $\frac{p^n-1}{2} + 1$ Körperelemente \cite{RootsFiniteFields}. In diesem Beispiel somit für 6 der 11 Elemente. Die dritte Zeile enthält die sich daraus ergebenden Lösungen $v_{1,2} = 5 \pm \sqrt{3+m}$. Aus diesen Lösungen und einem passenden Erzeuger lassen sich die Exponenten $\gamma$ und $\delta$ herleiten.
 
+In \Cref{table:subgroupsF11} sind die Untergruppen des $\field{11}$ aufgelistet. Wir wählen $v_1 = 3$ und $v_2 = 7$. Sei zum Beispiel der Erzeuger $a = 8$. Dann ist $3 = 8^6$ und $7 = 8^9$. Somit ist die \Cref{equation:013} durch
+\begin{align*}
+    {8^6}^2 + 8^6 &= {8^{9}}^2 + 8^9 \\
+    3^2 + 3 &= 7^2 + 7 \\
+    1 &= 1
+\end{align*}
+erfüllt und $(\det M_{IJ})(8) = 0$ für $J = \{0,6,9\}$. 
+
+Die Fälle, bei denen $v_1 \neq v_2 = 0$ ist, müssen hier nicht weiter betrachtet werden, da diese Werte nicht in der selben Untergruppe auftauchen können. Falls $v_1$ oder $v_2$ gleich $1$ ist, muss einer der Exponenten $\delta$ oder $\gamma$ gleich $0$ sein. Weil dieser Exponent nicht doppelt in $J$ vorkommen kann, ist dieser Fall ebenfalls nicht relevant. Gleiches gilt für $v_1 = v_2$. Alle zulässigen Lösungen $v_1,v_2$ führen zu folgenden Indexmengen:
 
 {\renewcommand{\arraystretch}{1.5}
 \begin{table}
@@ -70,21 +96,22 @@ Im Folgenden betrachten wir ein Beispiel für den Körper $\field{11}$, wobei $-
 \end{table}
 }
 
-\begin{table}
+\begin{table}[]
     \centering
-    \begin{tabular}{|C|C|C|C|C|C|C|C|C|C|C|C|}
+    \begin{tabular}{|C|C|C|C|C|C|C|C|C|C|}
     \hline
-    \text{\backslashbox{a}{i}} & 0 & 1  & 2 & 3 & 4 & 5  & 6 & 7 & 8 & 9 & 10 \\ \hline
-    1  & 1 & 1  &   &   &   &    &   &   &   &   &   \\ \hline
-    2  & 1 & 2  & 4 & 8 & 5 & 10 & 9 & 7 & 3 & 6 & 1 \\ \hline
-    3  & 1 & 3  & 9 & 5 & 4 & 1  &   &   &   &   &   \\ \hline
-    4  & 1 & 4  & 5 & 9 & 3 & 1  &   &   &   &   &   \\ \hline
-    5  & 1 & 5  & 3 & 4 & 9 & 1  &   &   &   &   &   \\ \hline
-    6  & 1 & 6  & 3 & 7 & 9 & 10 & 5 & 8 & 4 & 2 & 1 \\ \hline
-    7  & 1 & 7  & 5 & 2 & 3 & 10 & 4 & 6 & 9 & 8 & 1 \\ \hline
-    8  & 1 & 8  & 9 & 6 & 4 & 10 & 3 & 2 & 5 & 7 & 1 \\ \hline
-    9  & 1 & 9  & 4 & 3 & 5 & 1  &   &   &   &   &   \\ \hline
-    10 & 1 & 10 & 1 &   &   &    &   &   &   &   &   \\ \hline
+    \text{\backslashbox{i}{a}} & 2  & 3 & 4 & 5 & 6  & 7  & 8  & 9 & 10 \\ \hline
+    0 & 1  & 1 & 1 & 1 & 1  & 1  & 1  & 1 & 1  \\ \hline
+    1 & 2  & 3 & 4 & 5 & 6  & 7  & 8  & 9 & 10 \\ \hline
+    2 & 4  & 9 & 5 & 3 & 3  & 5  & 9  & 4 & 1  \\ \hline
+    3 & 8  & 5 & 9 & 4 & 7  & 2  & 6  & 3 &    \\ \hline
+    4 & 5  & 4 & 3 & 9 & 9  & 3  & 4  & 5 &    \\ \hline
+    5 & 10 & 1 & 1 & 1 & 10 & 10 & 10 & 1 &    \\ \hline
+    6 & 9  &   &   &   & 5  & 4  & 3  &   &    \\ \hline
+    7 & 7  &   &   &   & 8  & 6  & 2  &   &    \\ \hline
+    8 & 3  &   &   &   & 4  & 9  & 5  &   &    \\ \hline
+    9 & 6  &   &   &   & 2  & 8  & 7  &   &    \\ \hline
+    10 & 1  &   &   &   & 1  & 1  & 1  &   &    \\ \hline
     \end{tabular}
     \caption{Alle von einem $a \in \field{11}$ erzeugten Untergruppen.} \label{table:subgroupsF11}
 \end{table}
@@ -107,17 +134,17 @@ Im Folgenden betrachten wir ein Beispiel für den Körper $\field{11}$, wobei $-
 
 \begin{table}
     \centering
-    \begin{tabular}{|C|C|C|C|C|C|C|C|C|C|C|C|}
+    \begin{tabular}{|C|C|C|C|C|C|C|C|C|C|C|}
     \hline
-    \text{\backslashbox{i}{a}}& 1 & o       & o+1     & o^2     & o^2 + 1 & o^2 + o & o^2 + o + 1 \\ \hline
-    0 & 1 & 1       & 1       & 1       & 1       & 1       & 1           \\ \hline
-    1 & 1 & o       & o+1     & o^2     & o^2+1   & o^2+o   & o^2+o+1     \\ \hline
-    2 &   & o^2     & o^2+1   & o^2+o   & o^2+o+1 & o       & o+1         \\ \hline
-    3 &   & o+1     & o^2     & o^2+1   & o^2+o   & o^2+o+1 & o           \\ \hline
-    4 &   & o^2+o   & o^2+o+1 & o       & o+1     & o^2     & o^2+1       \\ \hline
-    5 &   & o^2+o+1 & o       & o+1     & o^2     & o^2+1   & o^2+o       \\ \hline
-    6 &   & o^2+1   & o^2+o   & o^2+o+1 & o       & o+1     & o^2         \\ \hline
-    7 &   & 1       & 1       & 1       & 1       & 1       & 1           \\ \hline
+    \text{\backslashbox{i}{a}}& o       & o+1     & o^2     & o^2 + 1 & o^2 + o & o^2 + o + 1 \\ \hline
+    0 & 1       & 1       & 1       & 1       & 1       & 1           \\ \hline
+    1 & o       & o+1     & o^2     & o^2+1   & o^2+o   & o^2+o+1     \\ \hline
+    2 & o^2     & o^2+1   & o^2+o   & o^2+o+1 & o       & o+1         \\ \hline
+    3 & o+1     & o^2     & o^2+1   & o^2+o   & o^2+o+1 & o           \\ \hline
+    4 & o^2+o   & o^2+o+1 & o       & o+1     & o^2     & o^2+1       \\ \hline
+    5 & o^2+o+1 & o       & o+1     & o^2     & o^2+1   & o^2+o       \\ \hline
+    6 & o^2+1   & o^2+o   & o^2+o+1 & o       & o+1     & o^2         \\ \hline
+    7 & 1       & 1       & 1       & 1       & 1       & 1           \\ \hline
     \end{tabular}
     \caption{Alle von einem $a \in \field{2}[3]$ erzeugten Untergruppen.} \label{table:subgroupsF2_3}
 \end{table}

@@ -1,14 +1,52 @@
 \section{Singuläre Submatrizen}
 
+Diese Kapitel befasst sich mit der Invertierbarkeit von Submatrizen für gegebene $a \in \field{p}[n]$. Dafür wollen wir im Folgenden hinreichende Bedingungen an die Indexmengen $I$ und $J$ stellen.
+
+Die erste Aussage bezieht sich auf die lineare Abhängigkeit zweier Spalten/Zeilen. Für die vorrangehenden Bespiele sei stets $a = 2 \in \field{11}$ mit der Ordnung $\ord{a} = 10$. Seien zunächst $I=\{0,1,6,11\}$ und $J=\{0,1,2,3\}$. Dann ist 
+\begin{equation*}
+    M_{IJ}(2) = \begin{pmatrix}
+        2^{0} & 2^{0} & 2^{0} & 2^{0} \\
+        2^{0} & 2^{1} & 2^{2} & 2^{3} \\
+        2^{0} & 2^{6} & 2^{12} & 2^{18} \\
+        2^{0} & 2^{11} & 2^{22} & 2^{33} 
+    \end{pmatrix} \underbrace{=}_{2^{10}=1} \begin{pmatrix}
+        2^{0} & 2^{0} & 2^{0} & 2^{0} \\
+        2^{0} & 2^{1} & 2^{2} & 2^{3} \\
+        2^{0} & 2^{6} & 2^{2} & 2^{8} \\
+        2^{0} & 2^{1} & 2^{2} & 2^{3} 
+    \end{pmatrix}
+\end{equation*}
+
+Da die Differenz $i_4 - i_2 = 11 - 1 = 10$ der Ordnung von $a$ entspricht, unterscheiden sich die Exponenten in diesen Zeilen um ein Vielfaches dieser Ordnung. Dadurch sind die zweite und vierte Zeile äquivalent und $(\det M_{IJ})(a) = 0$. 
+Seien nun $I=\{0,2,6,7\}$ und $J=\{0,2,4,6\}$. In diesen Indexmengen existieren keine zwei Elemente mit dem passenden Abstand von $10$. Die zweite und vierte Zeile der Submatrix
+
+\begin{equation*}
+    M_{IJ}(2) = \begin{pmatrix}
+        2^{0} & 2^{0} & 2^{0} & 2^{0} \\
+        2^{0} & 2^{4} & 2^{8} & 2^{12} \\
+        2^{0} & 2^{12} & 2^{24} & 2^{36} \\
+        2^{0} & 2^{14} & 2^{28} & 2^{42} 
+    \end{pmatrix} \underbrace{=}_{2^{10}=1} \begin{pmatrix}
+        2^{0} & 2^{0} & 2^{0} & 2^{0} \\
+        2^{0} & 2^{4} & 2^{8} & 2^{2} \\
+        2^{0} & 2^{2} & 2^{4} & 2^{6} \\
+        2^{0} & 2^{4} & 2^{8} & 2^{2} 
+    \end{pmatrix}
+\end{equation*}
+
+sind dennoch wieder äquivalent. Dies ergibt sich aus der Faktorisierung von $10 = 5 \cdot 2$. Die Differenz $i_4 - i_2 = 7 - 2 = 5$ entspricht dem ersten Faktor. Da alle Differenzen in $I$ ein Vielfaches der $2$ sein, unterscheiden sich die Exponenten in Zeile 2 und 4 wieder um ein Vielfaches der Ordnung, wodurch die lineare Abhängigkeit entsteht. Das folgende Lemma formalisiert dieses Resultat.
+
+
+
 \begin{lemma} \label{lemma:equal-columns}
-    Seien $a \in \field{p}[n], o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
+    Seien $a \in \field{p}[n], o = \ord{a} = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
     Falls
     \begin{equation} \label{equation:all-equal}
-        \forall \; i, i' \in I, i \neq i': i \equiv i' \pmod v
+        \forall \; i, i' \in I, i \neq i':\quad i \equiv i' \pmod v
     \end{equation}
     und
     \begin{equation} \label{equation:two-equal}
-        \exists \; j, j' \in J, j \neq j':  j \equiv j' \pmod w
+        \exists \; j, j' \in J, j \neq j':\quad  j \equiv j' \pmod w
     \end{equation}
     gelten, folgt
     \begin{equation*}
@@ -16,8 +54,11 @@
     \end{equation*}
 \end{lemma}
 
+{
+\Crefname{equation}{Bedingung}{Bedingungen}
+
 \begin{proof}
-    Wir betrachten $j,j' \in J$, welche die obige Bedingung erfüllen und zeigen, dass die dazugehörigen Spalten in $M_{IJ}$ linear abhängig sind. Seien $j = (c + bw)$, $j' = (c + b'w)$ und $I = \{(d+l_1v),\dots,(d+l_kv)\}$. Die Spalten zu $j$ und $j'$ haben die Form
+    Wir betrachten $j,j' \in J$, welche die obige \Cref{equation:two-equal} erfüllen und zeigen, dass die dazugehörigen Spalten in $M_{IJ}$ linear abhängig sind. Seien $j = (c + bw)$, $j' = (c + b'w)$ und $I = \{(d+l_1v),\dots,(d+l_kv)\}$. Die Spalten zu $j$ und $j'$ haben die Form
     \begin{align*}
         \begin{pmatrix}
             a^{i_1j} & a^{i_1j'} \\
@@ -56,14 +97,16 @@
             a^{l_kvc} & a^{l_kvc}
         \end{pmatrix}
     \end{equation*}
+
+    Aus der linearen Abhängigkeit der beiden Spalten folgt $(\det M_{IJ})(a) = 0$.
 \end{proof}
 
-Für beliebige $A \subseteq \mathbb{Z}$ und $a \in \mathbb{Z}$ folgt aus $|A| > a$, dass zwei Elemente $i,j \in A$ mit $i \equiv j \pmod a$ existieren müssen. Zusammen mit \Cref{lemma:equal-columns} bedeutet dies, dass für zwei Mengen $I,J \subseteq \mathbb{Z}$ mit $|I|=|J| > ord(a)$ immer $(\det M_{IJ})(a) = 0$ gilt. 
+Die \Cref{equation:all-equal}, dass alle Elemente einer Indexmenge in der selben Restklasse liegen müssen, ist eine starke Einschränkung in der Wahl der Indizes. Diese Anforderung kann abgeschwächt werden, wenn zusätzliche Bedingungen an die jeweils andere Indexmenge gestellt werden. 
 
-{
-\Crefname{equation}{Bedingung}{Bedingungen}
-\begin{satz}
-    Seien $a \in \field{p}[n], o = ord(a) = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
+
+
+\begin{satz} \label{satz:equal-columns-subs}
+    Seien $a \in \field{p}[n], o = \ord{a} = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
     Falls ein $I' \subseteq I$ mit $|I'| = \gamma \geq 1$ existiert, dass \Cref{equation:all-equal} erfüllt und alle $J' \subseteq J$ mit $|J'| = \gamma$ \Cref{equation:two-equal} erfüllen, folgt
     \begin{equation*}
         (\det M_{IJ})(a) = 0
@@ -77,8 +120,18 @@ Für beliebige $A \subseteq \mathbb{Z}$ und $a \in \mathbb{Z}$ folgt aus $|A| > 
 \end{equation*}
 Da $I'$ und alle $J'$ die \Cref{equation:all-equal,equation:two-equal} erfüllen, kann \Cref{lemma:equal-columns} auf die Terme $\det M_{I'J'}$ angewendet werden. Somit ist jeder Summand gleich $0$ und die Aussage folgt.
 \end{proof}
+
+
+Wir betrachten zum Beispiel die Indexmengen $I = \{0,2,3,4\}$ und $J = \{0,2,5,7\}$. Da die Teilmenge $I\backslash\{3\}$ die \Cref{equation:all-equal} erfüllt, wird entlang der Zeile zum Exponenten $3$ entwickelt. Die für die Berechnung relevanten Submatrizen ergeben sich aus den Paarungen
+
+\begin{align*}
+    I_1=\{0,2,4\} \text{ und } J_1=\{2,5,7\}, \\
+    I_2=\{0,2,4\} \text{ und } J_2=\{0,5,7\}, \\
+    I_3=\{0,2,4\} \text{ und } J_3=\{0,2,7\}, \\
+    I_4=\{0,2,4\} \text{ und } J_4=\{0,2,5\}.
+\end{align*}
+
+Diese erfüllen jeweils \Cref{equation:all-equal,equation:two-equal}, sodass \Cref{satz:equal-columns-subs} angewendet werden kann und $(\det M_{IJ})(a) = 0$ folgt.
 }
 
-Spezialfall:
-
-Sei $I=\{0,\dots,k\}$ und $J=\{j_i,\dots,j_k\} \subseteq \mathbb{Z}$. Dann entspricht $M_{IJ}$ der Vandermondematrix $V_{(x^{j_1},\dots,x^{j_k})}$ und die Determinante $\det M_{IJ} = \prod_{j_k<j_l \in J} (x^{j_k} - x^{j_l})$. Somit ist $(\det M_{IJ})(a) = 0$ genau dann, wenn zwei Exponenten $j_k,j_l \in J$ mit $j_k \equiv j_l \pmod{order(a)}$ existieren.
+Anstatt alle Teilmengen von $J$ einer bestimmten Kardinalität auf die Bedingung zu prüfen, kann auch das minimale $\gamma$ gesucht werden

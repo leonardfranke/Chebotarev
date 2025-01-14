@@ -1,0 +1,190 @@
+\section{Grundlagen}
+
+In diesem Kapitel klären wir die für den Hauptteil benötigten Definitionen und Sätze über endliche Körper. Zunächst konstruieren wir diese über Restklassenringe der ganzen Zahlen und über spezielle Polynomringe. Anschließend betrachten wir Untergruppen dieser Körper und untersuchen ihre zyklische Gruppen, Erzeuger und Ordnungen.
+
+\subsection{Restklassenringe}
+
+Die ersten grundlegenden endlichen Körper lassen sich über Restklassenringe der ganzen Zahlen konstruieren. Dazu betrachten wir im Folgenden Restabbildungen.
+
+\begin{satz}
+    Sei $\mathbb{Z}_n := \{0,\dots,n-1\}$. Dann existieren für jedes $a \in \mathbb{Z}$ eindeutig bestimmte Zahlen $f \in \mathbb{Z}$ und $r \in \mathbb{Z}_n$ mit $a = n \cdot f + r$.
+\end{satz}
+
+Sei zum Beispiel $n = 4$. Dann gelten folgende Darstellung.
+
+\begin{align*}
+    -2 &= 4 \cdot -1 + 2 \\
+    -1 &= 4 \cdot -1 + 3 \\
+    0 &= 4 \cdot 0 + 0 \\
+    1 &= 4 \cdot 0 + 1 \\
+    2 &= 4 \cdot 0 + 2 \\
+    3 &= 4 \cdot 0 + 3 \\
+    4 &= 4 \cdot 1 + 0 \\
+    5 &= 4 \cdot 1 + 1
+\end{align*}
+
+Die Zahl $r$ wird als der Rest von $a$ modulo $n$ bezeichnet. Wir schreiben auch kurz $r = a \bmod n$. Die Abbildung $\varrho_n : \mathbb{Z} \rightarrow \mathbb{Z}_n$, welche jeder ganzen Zahl ihren Rest zuordnet, ist die Restabbildung. Mit ihr kann aus der Restklasse $\mathbb{Z}_n$ einen Ring konstruiert werden.
+
+\begin{satz}
+    Sei $n \in \mathbb{N}$. Die Menge $\mathbb{Z}_n$ zusammen mit der Multiplikation $a \otimes b \mapsto \varrho_n(a \cdot b)$ und der Addition $a \oplus b \mapsto \varrho_n(a + b)$ bildet einen Ring. Dieser wird als Restklassenring modulo $n$ bezeichnet.
+\end{satz}
+
+Die Operationen im Restklassenring nutzen die von den ganzen Zahlen bekannte Addition und Multiplikation mit anschließenden Modulodivision. \Cref{table:tableZ4,table:tableZ5} zeigen die Addition- und Multiplikationstafel für $n=4$ und $n=5$. In diesen können einige der Ringaxiome verifiziert werden. Zum Beispiel existieren jeweils die neutralen Elemente $0$ und $1$. Außerdem besitzt jedes Element eine additiv Inverses. Bezüglich der Multiplikation existieren jedoch nicht immer inverse Elemente. Dies zeigt, dass der $\mathbb{Z}_n$ im Allgemeinen keinen Körper bildet. 
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|C|C|C|C|C|}
+    \hline
+    + & 0  & 1 & 2 & 3 \\ \hline
+    0 & 0  & 1 & 2 & 3 \\ \hline
+    1 & 1  & 2 & 3 & 0 \\ \hline
+    2 & 2  & 3 & 0 & 1 \\ \hline
+    3 & 3  & 0 & 1 & 2 \\ \hline
+    \end{tabular}
+    \quad
+    \begin{tabular}{|C|C|C|C|C|}
+        \hline
+    \cdot & 0  & 1 & 2 & 3 \\ \hline
+        0 & 0  & 0 & 0 & 0 \\ \hline
+        1 & 0  & 1 & 2 & 3 \\ \hline
+        2 & 0  & 2 & 0 & 2 \\ \hline
+        3 & 0  & 3 & 2 & 1 \\ \hline
+        \end{tabular}
+    \caption{Addition- und Multiplikationstafel für den Restklassenring $\mathbb{Z}_4$} \label{table:tableZ4}
+\end{table}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|C|C|C|C|C|C|}
+    \hline
+    + & 0  & 1 & 2 & 3 & 4 \\ \hline
+    0 & 0  & 1 & 2 & 3 & 4 \\ \hline
+    1 & 1  & 2 & 3 & 4 & 0 \\ \hline
+    2 & 2  & 3 & 4 & 0 & 1 \\ \hline
+    3 & 3  & 4 & 0 & 1 & 2 \\ \hline
+    4 & 4  & 0 & 1 & 2 & 3 \\ \hline
+    \end{tabular}
+    \quad
+    \begin{tabular}{|C|C|C|C|C|C|}
+        \hline
+    \cdot & 0  & 1 & 2 & 3 & 4 \\ \hline
+        0 & 0  & 0 & 0 & 0 & 0 \\ \hline
+        1 & 0  & 1 & 2 & 3 & 4 \\ \hline
+        2 & 0  & 2 & 4 & 1 & 3 \\ \hline
+        3 & 0  & 3 & 1 & 4 & 2 \\ \hline
+        4 & 0  & 4 & 2 & 2 & 1 \\ \hline
+        \end{tabular}
+    \caption{Addition- und Multiplikationstafel für den Restklassenring $\mathbb{Z}_5$} \label{table:tableZ5}
+\end{table}
+
+Wie der folgende Satz zeigen wird, bildet der Restklassenring $\mathbb{Z}_n$ unter einer bestimmten Vorraussetzung einen Körper.
+
+\begin{satz}
+    $\mathbb{Z}_n$ ist genau dann ein Körper, wenn $n$ eine Primzahl ist. 
+\end{satz}
+
+In diesem Fall schreiben wir $\field{p} := \mathbb{Z}_p$ für eine Primzahl $p$. Von den beiden Beispielen $\mathbb{Z}_4$ und $\mathbb{Z}_5$ ist somit nur der zweite ein Körper, da die $5$ Primzahl ist.
+
+\subsection{Polynomringe}
+
+Die über Restklassenringen konstruierten Körper besitzen alle die Mächtigkeit eine Primzahl. Darauf aufbauend können mithilfe von Polynomen weitere endliche Körper gebildet werden. 
+Analog zu den ganzen Zahlen wird dafür zunächst ein Ring erzeugt.
+
+\begin{satz}
+    Sei $\mathbb{F}$ Körper. Die Menge $\mathbb{F} {[X]}$ der Polynome mit Koeffizienten in $\mathbb{F}$ zusammen mit der von Polynomen bekannten Addition und Multiplikation ist ein Ring. 
+\end{satz}
+
+Auch für diese Menge lässt sich eine Modulodivison mit Restabbildung definieren. 
+
+\begin{satz}
+    Sei $n \in \mathbb{F} {[X]}$ mit $N = \mathrm{grad}(n)$. Dann existieren für jedes $a \in \mathbb{F} {[X]}$ eindeutig bestimmte Polynome $f ,r \in \mathbb{F} {[X]}$ mit $a = n \cdot f + r$ und $\mathrm{grad}(r) < N$.
+\end{satz}
+
+%Vllt Beispiel für Polynomdivision
+
+Das Polynom $r$ wird ebenfalls als der Rest von $a$ modulo $n$ bezeichnet. Mithilfe der Restabbildung $\varrho_n : \mathbb{F} {[X]} \rightarrow \field{n} {[X]}$, welche jedem Polynom ihren Rest zuordnet, lässt sich wieder ein Ring erzeugen.
+
+\begin{satz}
+    Sei $n \in \mathbb{F} {[X]}$. Die Menge $\field{n} {[X]}$ zusammen mit der Multiplikation $a \otimes b \mapsto \varrho_n(a \cdot b)$ und der Addition $a \oplus b \mapsto \varrho_n(a + b)$ bildet einen Ring. Dieser wird als Polynomring modulo $n$ bezeichnet.
+\end{satz}
+
+Sei zum Beispiel $\mathbb{F} = \field{2}$ und $n$ ein Polynom vom Grad 2. Dann umfasst $\field{n} {[X]}$ alle Polynome vom Grad kleiner als 2. \Cref{table:tableF41,table:tableF42} zeigen die Addition- und Multiplikationstafeln für $n=x^2 + x$ und $n= x^2 + x + 1$.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|C|C|C|C|C|}
+    \hline
+    +   & 0     & 1     & x     & x + 1 \\ \hline
+    0   & 0     & 1     & x     & x+1 \\ \hline
+    1   & 1     & 0     & x+1   & x \\ \hline
+    x   & x     & x+1   & 0     & 1 \\ \hline
+    x+1 & x+1   & x     & 1     & 0 \\ \hline
+    \end{tabular}
+    \quad
+    \begin{tabular}{|C|C|C|C|C|}
+        \hline
+    \cdot   & 0 & 1     & x     & x + 1 \\ \hline
+        0   & 0 & 0     & 0     & 0 \\ \hline
+        1   & 0 & 1     & x     & x+1 \\ \hline
+        x   & 0 & x     & x     & 0 \\ \hline
+        x+1 & 0 & x+1   & 0     & x+1 \\ \hline
+        \end{tabular}
+    \caption{Addition- und Multiplikationstafel für den Polynomring $\field{n} {[X]}$ für $n=x^2 + x$} \label{table:tableF41}
+\end{table}
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|C|C|C|C|C|}
+    \hline
+    +   & 0     & 1     & x     & x + 1 \\ \hline
+    0   & 0     & 1     & x     & x+1 \\ \hline
+    1   & 1     & 0     & x+1   & x \\ \hline
+    x   & x     & x+1   & 0     & 1 \\ \hline
+    x+1 & x+1   & x     & 1     & 0 \\ \hline
+    \end{tabular}
+    \begin{tabular}{|C|C|C|C|C|}
+        \hline
+    \cdot   & 0 & 1     & x     & x + 1 \\ \hline
+        0   & 0 & 0     & 0     & 0 \\ \hline
+        1   & 0 & 1     & x     & x+1 \\ \hline
+        x   & 0 & x     & x + 1& 1 \\ \hline
+        x+1 & 0 & x+1   & 1     & x \\ \hline
+        \end{tabular}
+    \caption{Addition- und Multiplikationstafel für den Polynomring $\field{n} {[X]}$ für $n=x^2 + x + 1$} \label{table:tableF42}
+\end{table}
+
+Analog können wieder einige Ringaxiome verifiziert werden. Die konstanten Polynome $0$ und $1$ sind die neutralen Elemente. Offensicht existieren nicht immer multiplikativ inverse Element, sodass auch der $\field{n} {[X]}$ im Allgemeinen kein Körper ist. Die Eigenschaft, welche das Polynom $n$ erfüllen muss, damit der $\field{n} {[X]}$ ein Körper ist, wird im folgenden Abschnitt betrachtet.
+
+\subsection{Endliche Körper}
+
+\begin{comment}
+\begin{enumerate}
+    \item Abschnitt Einfache endliche Körper:
+    \item Definition: Restklassenring $\mathbb{Z}_n$
+    \item Satz: $\mathbb{Z}_n$ ist Ring
+    \item Satz: $\mathbb{Z}_p$ ist Körper für $p$ Primzahl
+    \item (Satz von Fermat)    
+    
+    \item Abschnitt Polynomringe:
+    \item Definition: Polynom
+    \item Satz: Division mit Rest existiert (2.6)
+    \item Satz: Polynomringe (${\field{p}}[X]$ und ${\field{p}}_{N} [X]$) sind Ringe
+\end{enumerate}
+\end{comment}    
+\begin{enumerate}    
+    \item Abschnitt Endliche Körper:
+    \item Teiler und Irreduzible Polynome
+    \item Satz: ${\field{p}}_{N} [X]$ ist Körper für N irreduzibel (3.7)
+    \item Satz: Existenzsatz (10.4)
+    \item Satz: Eindeutigkeitssatz (10.9)
+    
+    \item Abschnitt zyklische Gruppe:
+    \item Definition: zyklische Gruppe (6.4)
+    \item Satz: Zyklische Gruppe besitzt primitives Element
+    \item Potenzgesetze
+    \item Satz: Multiplikative Gruppe ${\field{p}}^{\ast}$ und ihre Untergruppen sind zyklisch
+    \item (Potenzen bilden Untergruppe (6.4))
+    \item Definition: Ordnung eines Elements (/ einer Gruppe)
+    \item Satz: Potenzen sind zyklisch (6.8)
+    \item Satz: Elemente bilden eigene Untergruppe mit Ordnung als Teiler (6.9)
+\end{enumerate}
