@@ -168,8 +168,8 @@ function is_trivial(root, expRow, expCol)
 end
 
 with_trivials = false
-for p in primes(46,47)
-    for n in [20]
+for p in [2]
+    for n in primes(14,30)
         F, PR, x = getPolyRing(p, 1)
         
         # Erzeugt die Matrix mit den Einträgen x^{i*j}
