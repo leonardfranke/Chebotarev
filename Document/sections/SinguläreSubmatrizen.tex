@@ -1,8 +1,16 @@
 \section{Singuläre Submatrizen}
 
-Diese Kapitel befasst sich mit der Invertierbarkeit von Submatrizen für gegebene $a \in \field{p}[n]$. Dafür wollen wir im Folgenden hinreichende Bedingungen an die Indexmengen $I$ und $J$ stellen.
+Diese Kapitel befasst sich mit der Invertierbarkeit der $M_{IJ}$ für gegebenes $a \in \field{p}[n]$. Dazu wird eine hinreichende Bedingung erarbeitet, die angibt, für welche Indexmengen die Submatrix $M_{IJ}$ nicht invertierbar ist. 
 
-Die erste Aussage bezieht sich auf die lineare Abhängigkeit zweier Spalten/Zeilen. Für die vorrangehenden Bespiele sei stets $a = 2 \in \field{11}$ mit der Ordnung $\ord{a} = 10$. Seien zunächst $I=\{0,1,6,11\}$ und $J=\{0,1,2,3\}$. Dann ist 
+Wieder können Eigenschaften der zyklischen Gruppen ausgenutzt werden. Die in diesem Kapitel gezeigten Sätze basieren vorrangig auf der Gleichung
+
+\begin{equation*}
+    a^i = a^j \iff i = j \bmod \ord{a},
+\end{equation*}
+
+welche sich direkt aus \Cref{satz:cyclicity} ergibt. Zwei Potenzen sind somit genau dann gleich, wenn sich die Exponenten um ein Vielfaches der Ordnung unterscheiden. Diese Bedingung gilt ebenso für die Gleichheit zweier Zeilen/Spalten der Matrizen $M_{IJ}$. 
+
+Sei für die folgenden Beispiele stets $a = 2 \in \field{11}$ mit der Ordnung $\ord{a} = 10$. Seien zunächst $I=\{0,1,6,11\}$ und $J=\{0,1,2,3\}$. Dann ist 
 \begin{equation*}
     M_{IJ}(2) = \begin{pmatrix}
         2^{0} & 2^{0} & 2^{0} & 2^{0} \\
@@ -17,7 +25,8 @@ Die erste Aussage bezieht sich auf die lineare Abhängigkeit zweier Spalten/Zeil
     \end{pmatrix}
 \end{equation*}
 
-Da die Differenz $i_4 - i_2 = 11 - 1 = 10$ der Ordnung von $a$ entspricht, unterscheiden sich die Exponenten in diesen Zeilen um ein Vielfaches dieser Ordnung. Dadurch sind die zweite und vierte Zeile äquivalent und $(\det M_{IJ})(a) = 0$. 
+Da die Differenz $i_4 - i_2 = 11 - 1 = 10$ der Ordnung von $a$ entspricht, unterscheiden sich die Exponenten in den Zeilen 2 und 4 um ein Vielfaches dieser Ordnung. Dadurch sind diese Zeilen äquivalent und $(\det M_{IJ})(a) = 0$. 
+
 Seien nun $I=\{0,2,6,7\}$ und $J=\{0,2,4,6\}$. In diesen Indexmengen existieren keine zwei Elemente mit dem passenden Abstand von $10$. Die zweite und vierte Zeile der Submatrix
 
 \begin{equation*}
@@ -36,17 +45,14 @@ Seien nun $I=\{0,2,6,7\}$ und $J=\{0,2,4,6\}$. In diesen Indexmengen existieren 
 
 sind dennoch wieder äquivalent. Dies ergibt sich aus der Faktorisierung von $10 = 5 \cdot 2$. Die Differenz $i_4 - i_2 = 7 - 2 = 5$ entspricht dem ersten Faktor. Da alle Differenzen in $I$ ein Vielfaches der $2$ sein, unterscheiden sich die Exponenten in Zeile 2 und 4 wieder um ein Vielfaches der Ordnung, wodurch die lineare Abhängigkeit entsteht. Das folgende Lemma formalisiert dieses Resultat.
 
-
-
 \begin{lemma} \label{lemma:equal-columns}
-    Seien $a \in \field{p}[n], o = \ord{a} = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
-    Falls
+    Sei $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$. Seien weiter $I,J \subseteq \mathbb{Z}$ zwei Indexmengen und $a \in \field{p}[n]$ mit der Ordnung $o = \ord{a} = v\cdot w$. Falls
     \begin{equation} \label{equation:all-equal}
-        \forall \; i, i' \in I, i \neq i':\quad i \equiv i' \pmod v
+        \forall \; i, i' \in I, i \neq i':\quad i = i' \bmod v
     \end{equation}
     und
     \begin{equation} \label{equation:two-equal}
-        \exists \; j, j' \in J, j \neq j':\quad  j \equiv j' \pmod w
+        \exists \; j, j' \in J, j \neq j':\quad  j = j' \bmod w
     \end{equation}
     gelten, folgt
     \begin{equation*}
@@ -58,7 +64,7 @@ sind dennoch wieder äquivalent. Dies ergibt sich aus der Faktorisierung von $10
 \Crefname{equation}{Bedingung}{Bedingungen}
 
 \begin{proof}
-    Wir betrachten $j,j' \in J$, welche die obige \Cref{equation:two-equal} erfüllen und zeigen, dass die dazugehörigen Spalten in $M_{IJ}$ linear abhängig sind. Seien $j = (c + bw)$, $j' = (c + b'w)$ und $I = \{(d+l_1v),\dots,(d+l_kv)\}$. Die Spalten zu $j$ und $j'$ haben die Form
+    Seien $j,j' \in J$ die Indizes, welche die obige \Cref{equation:two-equal} erfüllen. Im Folgenden wird gezeigt, dass die dazugehörigen Spalten in $M_{IJ}$ linear abhängig sind. Seien $j = (c + bw)$, $j' = (c + b'w)$ und $I = \{(d+l_1v),\dots,(d+l_kv)\}$. Die Spalten zu $j$ und $j'$ haben die Form
     \begin{align*}
         \begin{pmatrix}
             a^{i_1j} & a^{i_1j'} \\
@@ -74,14 +80,9 @@ sind dennoch wieder äquivalent. Dies ergibt sich aus der Faktorisierung von $10
             a^{dc + dbw +l_1vc + l_1bvw} & a^{dc + db'w +l_1vc + l_1b'vw} \\
             \vdots & \vdots \\
             a^{dc + dbw +l_kvc + l_kbvw} & a^{dc + db'w +l_kvc + l_kb'vw}
-        \end{pmatrix} \\
-        &= \begin{pmatrix}
-            a^{dc + dbw +l_1vc + l_1bvw} & a^{dc + db'w +l_1vc + l_1b'vw} \\
-            \vdots & \vdots \\
-            a^{dc + dbw +l_kvc + l_kbvw} & a^{dc + db'w +l_kvc + l_kb'vw}
-        \end{pmatrix} \\
+        \end{pmatrix}
     \end{align*}
-    Die konstanten Terme $a^{dc + dbw}$ und $a^{dc + db'w}$ können aus den Spalten faktorisiert werden, sodass verbleiben
+    Die konstanten Terme $a^{dc + dbw}$ und $a^{dc + db'w}$ können aus den Spalten geteilt werden, sodass verbleiben
     \begin{equation*}
         \begin{pmatrix}
             a^{l_1vc} {a^{vw}}^{l_1b} & a^{l_1vc} {a^{vw}}^{l_1b'} \\
@@ -89,7 +90,7 @@ sind dennoch wieder äquivalent. Dies ergibt sich aus der Faktorisierung von $10
             a^{l_kvc} {a^{vw}}^{l_kb} & a^{l_kvc} {a^{vw}}^{l_kb'}
         \end{pmatrix}
     \end{equation*}
-    Da $a^{vw} = a^{o} = 1$ gilt, verbleiben die gleichen Spalten.
+    Da $a^{vw} = a^{o} = 1$ gilt, verbleiben äquivalente Spalten.
     \begin{equation*}
         \begin{pmatrix}
             a^{l_1vc} & a^{l_1vc} \\
@@ -101,13 +102,14 @@ sind dennoch wieder äquivalent. Dies ergibt sich aus der Faktorisierung von $10
     Aus der linearen Abhängigkeit der beiden Spalten folgt $(\det M_{IJ})(a) = 0$.
 \end{proof}
 
-Die \Cref{equation:all-equal}, dass alle Elemente einer Indexmenge in der selben Restklasse liegen müssen, ist eine starke Einschränkung in der Wahl der Indizes. Diese Anforderung kann abgeschwächt werden, wenn zusätzliche Bedingungen an die jeweils andere Indexmenge gestellt werden. 
+Für eine Indexmengen $I$ mit $|I| > \ord{a}$ existieren stets zwei Elemente $i$ und $i'$ mit $i = i' \bmod \ord{a}$. Da dadurch alle Bedingungen des gezeigten Lemmas erfüllt sind, folgt direkt $(\det M_{IJ})(a) = 0$. Es genügt somit Indexmengen zu untersuchen, deren Mächtigkeit kleiner als eine gewählte (Gruppen-)Ordnung ist.
 
-
+Die \Cref{equation:all-equal}, dass alle Elemente einer Indexmenge in der selben Restklasse liegen müssen, ist eine starke Einschränkung in der Wahl der Indizes. Diese Anforderung kann abgeschwächt werden, wenn zusätzliche Bedingungen an die jeweils andere Indexmenge gestellt werden.
 
 \begin{satz} \label{satz:equal-columns-subs}
-    Seien $a \in \field{p}[n], o = \ord{a} = v\cdot w$ und $I,J \subseteq \mathbb{Z}$.
-    Falls ein $I' \subseteq I$ mit $|I'| = \gamma \geq 1$ existiert, dass \Cref{equation:all-equal} erfüllt und alle $J' \subseteq J$ mit $|J'| = \gamma$ \Cref{equation:two-equal} erfüllen, folgt
+    Sei $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$. Seien weiter $I,J \subseteq \mathbb{Z}$ zwei Indexmengen und $a \in \field{p}[n]$ mit der Ordnung $o = \ord{a} = v\cdot w$.
+
+    Falls eine Teilmenge $I' \subseteq I$ existiert, die \Cref{equation:all-equal} erfüllt und alle $J' \subseteq J$ mit $|J'| = |I'|$ \Cref{equation:two-equal} erfüllen, folgt
     \begin{equation*}
         (\det M_{IJ})(a) = 0
     \end{equation*}
@@ -116,13 +118,12 @@ Die \Cref{equation:all-equal}, dass alle Elemente einer Indexmenge in der selben
 \begin{proof}
     Zu Bestimmung der Determinante führen wir eine Zeilenentwicklung über die Indizes $I'$ durch. 
 \begin{equation*}
-    (\det M_{IJ})(a) = \left( \sum_{J':|J'| = \gamma} (-1)^{\sum I' + \sum J'} \left( \det M_{I'J'} \cdot \det M_{I\backslash I',J\backslash J'} \right) \right)(a)
+    (\det M_{IJ})(a) = \left( \sum_{J':|J'| = |I'|} (-1)^{\ast} \left( \det M_{I'J'} \cdot \det M_{I\backslash I',J\backslash J'} \right) \right)(a) % \sum I' + \sum J'
 \end{equation*}
 Da $I'$ und alle $J'$ die \Cref{equation:all-equal,equation:two-equal} erfüllen, kann \Cref{lemma:equal-columns} auf die Terme $\det M_{I'J'}$ angewendet werden. Somit ist jeder Summand gleich $0$ und die Aussage folgt.
 \end{proof}
 
-
-Wir betrachten zum Beispiel die Indexmengen $I = \{0,2,3,4\}$ und $J = \{0,2,5,7\}$. Da die Teilmenge $I\backslash\{3\}$ die \Cref{equation:all-equal} erfüllt, wird entlang der Zeile zum Exponenten $3$ entwickelt. Die für die Berechnung relevanten Submatrizen ergeben sich aus den Paarungen
+Sei weiterhin $a = 2 \in \field{11}$ mit der Ordnung $\ord{a} = 10$. Für ein Beispiel werden die Indexmengen $I = \{0,2,3,4\}$ und $J = \{0,2,5,7\}$ betrachtet, welche \Cref{lemma:equal-columns} nicht erfüllen. Da die Teilmenge $I\backslash\{3\}$ die \Cref{equation:all-equal} erfüllt, kann entlang der Zeile zum Exponenten $3$ entwickelt werden. Die für die Berechnung relevanten Submatrizen ergeben sich aus den Paarungen
 
 \begin{align*}
     I_1=\{0,2,4\} \text{ und } J_1=\{2,5,7\}, \\
@@ -134,4 +135,6 @@ Wir betrachten zum Beispiel die Indexmengen $I = \{0,2,3,4\}$ und $J = \{0,2,5,7
 Diese erfüllen jeweils \Cref{equation:all-equal,equation:two-equal}, sodass \Cref{satz:equal-columns-subs} angewendet werden kann und $(\det M_{IJ})(a) = 0$ folgt.
 }
 
-Anstatt alle Teilmengen von $J$ einer bestimmten Kardinalität auf die Bedingung zu prüfen, kann auch das minimale $\gamma$ gesucht werden
+\begin{comment}
+    Anstatt alle Teilmengen von $J$ einer bestimmten Kardinalität auf die Bedingung zu prüfen, kann auch das minimale $\gamma$ gesucht werden    
+\end{comment}

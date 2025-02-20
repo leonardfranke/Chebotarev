@@ -1,17 +1,17 @@
 \section{Einleitung}
 
 Diese Bachelorarbeit beschäftigt sich mit den Minoren verallgemeinerter Vandermondematrizen. Die betrachteten Matrizen besitzen die Form \begin{equation*}
-    \left( a^{ij} \right)_{1\leq i,j \leq n-1} = \begin{pmatrix}
+    \left( a^{ij} \right)_{0\leq i,j \leq k-1} = \begin{pmatrix}
         1     & 1    & 1    & 1    &\cdots& 1 \\
-        1     & a^1  & a^2  & a^3  &\cdots& a^{n-1} \\
-        1     & a^2  & a^4  & a^6  &\cdots& a^{2n-2} \\
-        1     & a^3  & a^6  & a^9  &\cdots& a^{3n-3} \\
+        1     & a^1  & a^2  & a^3  &\cdots& a^{k-1} \\
+        1     & a^2  & a^4  & a^6  &\cdots& a^{2k-2} \\
+        1     & a^3  & a^6  & a^9  &\cdots& a^{3k-3} \\
         \vdots&\vdots&\vdots&\vdots&\ddots&\vdots \\
-        1     &a^{n-1}&a^{2n-2}&a^{3n-3}&\cdots&a^{(n-1)(n-1)}
+        1     &a^{k-1}&a^{2k-2}&a^{3k-3}&\cdots&a^{(k-1)(k-1)}
     \end{pmatrix},
 \end{equation*}
-wobei $a$ stets Element eines endlichen Körpers ist. Für gegebenes $n$ suchen wir alle $a$, sodass jede Untermatix von $\left( a^{ij} \right)_{1\leq i,j \leq n-1}$ invertierbar ist.
-Diese Untermatizen ergeben sich dann aus der Wahl zweier gleich mächtiger Indexmengen $I,J \subseteq \{0, \dots, n-1\}$.
+wobei $a$ stets Element eines endlichen Körpers ist. Für gegebenes $n$ suchen wir alle $a$, sodass jede Untermatix von $\left( a^{ij} \right)_{0\leq i,j \leq k-1}$ invertierbar ist.
+Diese Untermatizen ergeben sich dann aus der Wahl zweier gleich mächtiger Indexmengen $I,J \subseteq \{0, \dots, k-1\}$.
 
-Für eine ähnliche Konstruktion über den komplexen Zahlen $\mathbb{C}$ gibt es bereits Resultate bezüglich der Minoren. Der Mathematiker Chebotarev zeigte 1926, dass für primitive $p$-te Einheitswurzel (zum Beispiel $a=e^{2\pi i/p}$) alle Untermatizen von $\left( a^{ij} \right)_{1\leq i,j \leq p-1}$ invertierbar sind, falls $p$ Primzahl ist. \cite{CheboProof}
+Für eine ähnliche Konstruktion über den komplexen Zahlen $\mathbb{C}$ gibt es bereits Resultate bezüglich der Minoren. Der Mathematiker Chebotarev zeigte 1926, dass für primitive $p$-te Einheitswurzel (zum Beispiel $a=e^{2\pi i/p}$) alle Untermatizen von $\left( a^{ij} \right)_{0\leq i,j \leq p-1}$ invertierbar sind, falls $p$ Primzahl ist. \cite{CheboProof}
 Analog existiert eine Aussage über $p$-te primitive Einheitswurzeln endlicher Körper. Diese gilt jedoch nur für spezielle Primzahlpotenzen $q^{p-1}$, bei denen $q$ sehr groß sein muss. \cite{CheboFiniteFields}

@@ -1,6 +1,8 @@
-\documentclass{article}
+\documentclass[parskip=half]{scrartcl}
 
+\usepackage{tikz}
 \usepackage{comment}
+\usepackage{subcaption}
 \usepackage{todonotes}
 \usepackage{xparse}
 \usepackage{slashbox}
@@ -21,6 +23,7 @@
 \newtheorem{korollar}[satz]{Korollar}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
+\Crefname{satz}{Satz}{Sätze}
 
 \newcolumntype{C}{>{$}c<{$}}
 
@@ -42,15 +45,11 @@
 
 \include{sections/Grundlagen}
 
-\include{sections/Definitionen}
+\todo{Ungenauigkeiten zu F* anpassen}
 
 \include{sections/Indextransformationen}
 
-\todo{Graph mit vollständig Bipartiten Untergraphen konstruieren und erläutern, Isomorphismus über das inverse Element erläutern}
-
 \include{sections/SinguläreSubmatrizen}
-
-\todo{Maximales Gamma bestimmen, Abschätzung Mächtigkeit zu Partition}
 
 \include{sections/SpezielleIndexmengen}
 
