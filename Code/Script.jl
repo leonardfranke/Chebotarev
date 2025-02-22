@@ -4,6 +4,7 @@ using Combinatorics
 using Primes
 using DataFrames
 using CSV
+using JLD2
 
 
 function ord(a, field)
@@ -32,12 +33,20 @@ function Fourier(x, n, ord)
 end
 
 det_dict_lock = ReentrantLock();
-det_dict = Dict{Tuple{Set{Int}, Set{Int}}, ZZPolyRingElem}()
+filename = "det_dict.jls"
+if isfile(filename)
+    @load filename det_dict
+else
+    det_dict = Dict{Tuple{Set{Int}, Set{Int}}, ZZPolyRingElem}()  # Falls Datei fehlt, leeres Dict verwenden
+end
+println("Loaded dict: ", length(det_dict), " entries")
 function determinant(indizesRow, indizesCol, z)
+    println("Determinant: ", indizesRow, " - ", indizesCol)
     key = (Set(indizesRow), Set(indizesCol))
     if haskey(det_dict, key)
-        # println("Found key")
-        return det_dict[key]
+        found = det_dict[key]
+        println("Found: ", found)
+        return found
     end
 
     if size(indizesRow, 1) == 1 && size(indizesCol, 1) == 1
@@ -79,36 +88,39 @@ function find_zero_minors(q,p)
     
     PR, x = polynomial_ring(field, "x")
 
-    max_size = round(Int, (p-1)/2)
-    seenI = Set{Int}()
+    max_size = 3 #round(Int, (p-1)/2)
+    seenI = Set{Vector{Int64}}()
     for i in 3:(BigInt(2)^p - 1)
         mat_size = sum(digits(i, base=2))
         if mat_size > max_size
             continue
         end
-        smallestI = minimum([((i >> k) | (i << (p - k))) & ((1 << p) - 1) for k in 0:(p - 1)])
+        digits_i = digits(i, base=2, pad=p)
+        smallestI = maximum([circshift(digits_i, k) for k in 0:(p - 1)])
         if smallestI in seenI
             continue
         end
         push!(seenI, smallestI)
-        seenJ = Set{Int}()
+        seenJ = Set{Vector{Int64}}()
         for j in i:(BigInt(2)^p-1)
             if sum(digits(j, base=2)) != mat_size
                 continue
             end
-            smallestJ = minimum([((j >> k) | (j << (p - k))) & ((1 << p) - 1) for k in 0:(p - 1)])
+            digits_j = digits(j, base=2, pad=p)
+            smallestJ = maximum([circshift(digits_j, k) for k in 0:(p - 1)])
             if smallestJ in seenJ
                 continue
             end
             push!(seenJ, smallestJ)
 
-            indizesRow = Bool[digits(smallestI, base=2, pad=p)...]
-            indizesCol = Bool[digits(smallestJ, base=2, pad=p)...]
+            indizesRow = Bool[smallestI...]
+            indizesCol = Bool[smallestJ...]
             indizesRow_int = findall(indizesRow).-1
             indizesCol_int = findall(indizesCol).-1
+            # println("Checking: ", indizesRow_int, " - ", indizesCol_int)
             minor = determinant(indizesRow_int, indizesCol_int, z)
             minor = PR(minor)
-            # println(indizesRow_int, indizesCol_int, minor)
+            println(indizesRow_int, indizesCol_int, minor)
             norm_minor = normalize_polynomial(minor, x, p)
             #println("Minor: ", minor)
             #println("Norm Minor: ", norm_minor)
@@ -116,25 +128,31 @@ function find_zero_minors(q,p)
             if iszero(eval)
                 println("Zero minor: ", indizesRow_int, " - ", indizesCol_int, " - ", minor, " - ", norm_minor)
                 @lock my_lock push!(results_df, (q, p, p_root, "[" * join(string.(indizesRow_int), " ") * "]", "[" * join(string.(indizesCol_int), " ") * "]"))
-                return
+                writeCSV()
             end
         end
     end 
     println("No zero minor")   
     @lock my_lock push!(results_df, (q, p, p_root, "", ""))
+    writeCSV()
 end
 
 
 results_df = DataFrame(q=Int[], p=Int[], p_root=Any[], row=String[], col=String[])
 function writeCSV()
     println("Writing csv file")
-    @lock my_lock CSV.write("data2.csv", results_df, delim="|")
+    @lock my_lock CSV.write("dataTest.csv", results_df, delim="|")
 end
-atexit(writeCSV)
+
+function exiting()
+    @save "det_dict.jls" det_dict
+    writeCSV()
+end
+atexit(exiting)
 
 println("Running with ", Threads.nthreads(), " threads!")
 my_lock = ReentrantLock();
-Threads.@threads for (q,p) in collect(Iterators.product(primes(2,2), primes(67,67)))
+Threads.@threads for (q,p) in collect(Iterators.product(primes(2,13), primes(2,13)))
     base_field = GF(p,1)
     ord_q = ord(base_field(q), base_field)    
     if ord_q != p-1
