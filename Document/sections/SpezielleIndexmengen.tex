@@ -6,9 +6,9 @@ Zuerst werden Indexmengen mit zusammenhängenden Indizes betrachtet. Sei ohne Be
 \begin{equation*}
     \det V_{(x^{j_1},\dots,x^{j_k})} = \prod_{1\leq v<w\leq k} (x^{j_v} - x^{j_w})
 \end{equation*}
-bekannt ist. Damit $(\det M_{IJ})(a) = 0$ gilt, müssen wieder zwei Indizes existieren, deren Differenz ein Vielfaches der Ordnung von $a$ entspricht. Dies ist ebenfalls wieder der Fall, wenn die Mächtigkeit der Indexmengen größer als die Ordnung ist.
+bekannt ist. \cite{VandermondeDet} 
 
-\todo{Cite Vandermondedeterminante}
+Damit $(\det M_{IJ})(a) = 0$ gilt, müssen wieder zwei Indizes existieren, deren Differenz ein Vielfaches der Ordnung von $a$ entspricht. Dies ist ebenfalls wieder der Fall, wenn die Mächtigkeit der Indexmengen größer als die Ordnung ist.
 
 Als nächstes werden spezielle Indexmengen mit $|I| = |J| = 3$ untersucht. Seien $I = \{0, 1, 3\}$ und $J = \{0, \alpha, \beta\}$ für beliebige $\alpha,\beta \in \mathbb{Z}$. Dann besitzt $M_{IJ}$ die Form 
 \begin{equation*}
@@ -36,13 +36,13 @@ Mithilfe von Zeilenumformungen und anschließender Spaltenentwicklung ergibt sic
         x^{\alpha} -1 & x^{\beta} -1 \\
         x^{3\alpha} -1 & x^{3\beta} -1
     \end{pmatrix} \\
-    &= (x^{\alpha} -1)(x^{\beta} -1) - (x^{3\alpha} -1)(x^{3\beta} -1)
+    &= (x^{\alpha} -1)(x^{3\beta} -1) - (x^{3\alpha} -1)(x^{\beta} -1)
 \end{align*}
 
-Für ein $a \in \field{p}[n]$ ist die Submatrix $M_{IJ}$ somit genau dann nicht invertierbar, falls $a$ die Gleichung $(x^{\alpha} -1)(x^{\beta} -1) = (x^{3\alpha} -1)(x^{3\beta} -1)$ löst. Diese Bedingung reduziert sich weiter zu.
+Für ein $a \in \field{p}[n]^\times$ ist die Submatrix $M_{IJ}$ somit genau dann nicht invertierbar, falls $a$ die Gleichung $(x^{\alpha} -1)(x^{3\beta} -1) = (x^{3\alpha} -1)(x^{\beta} -1)$ löst. Diese Bedingung reduziert sich weiter zu.
 
 \begin{align}
-        & (x^{\alpha} -1)(x^{3\beta} -1) = (x^{\beta} -1)(x^{3\alpha} -1) \nonumber \\
+        & (x^{\alpha} -1)(x^{3\beta} -1) = (x^{3\alpha} -1)(x^{\beta} -1) \nonumber \\
     \iff & \frac{(x^{3\beta} -1)}{(x^{\beta} -1)} = \frac{(x^{3\alpha} -1)}{(x^{\alpha} -1)} \nonumber \\
     \iff & {x^\beta}^2 + x^{\beta} + 1 = {x^{\alpha}}^2 + x^{\alpha} + 1 \nonumber \\
     \iff & {x^\beta}^2 + x^{\beta} = {x^{\alpha}}^2 + x^{\alpha}. \label{equation:013}
@@ -50,16 +50,14 @@ Für ein $a \in \field{p}[n]$ ist die Submatrix $M_{IJ}$ somit genau dann nicht 
 
 Anders formuliert sind nun zwei Elemente $v_1 = a^\alpha$ und $v_2 = a^\beta$ gesucht, die $x^2 + x = m$ für ein festes $m \in \field{p}[n]$ lösen. Abhängig von der Charakteristik des Körpers existieren zwei unterschiedliche Lösungsformeln.
 
-\begin{lemma}
+\begin{lemma}[{\cite[S. 4]{QuadEquCharNot2}}]
     Sei $\charac(\field{p}[n]) \neq 2$. Die quadratische Gleichung $x^2 + x = m$ ist genau dann lösbar, wenn die Wurzel $\sqrt{2^{-2} + m}$ existiert. Die Lösungen lauten dann
     \begin{equation*}
         v_{1,2} = -2^{-1} \pm \sqrt{2^{-2} + m}.
     \end{equation*}
 \end{lemma}
 
-\todo{Cite Quadratische Gleichung}
-
-\begin{lemma}[{\cite{QuadEquChar2}}]
+\begin{lemma}[{\cite[S. 140]{QuadEquChar2}}]
     Sei $\charac(\field{p}[n]) = 2$. Die quadratische Gleichung $x^2 + x = m$ ist genau dann lösbar, wenn $\Tr(m) = 0$ gilt. Die erste Lösung lautet dann
     \begin{equation*}
         v_1 = 1 + \sum_{k=1}^{n-1} m^{2^k}(\sum_{l=0}^{k-1} u^{2^l})

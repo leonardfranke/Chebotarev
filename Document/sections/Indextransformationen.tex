@@ -1,11 +1,8 @@
 \section{Lineare Indexabbildungen}
 
-Die Submatrizen einer Matrix $M$ werden über zwei gleich mächtige Indexmengen $I,J$ indiziert. Diese Submatrix wird als $M_{IJ}$ bezeichnet. 
 In diesem Kapitel werden lineare Abbildungen auf die Indexmengen $I,J$ angewendet und der Zusammengang zum Minor $\det M_{IJ}$ untersucht.
 
-\todo{Sortierung von I irrelevant, da Determinante alternierend ist}
-
-Die Matrix $M$ ist weiterhin von der Form $\left( x^{ij} \right)_{0\leq i,j \leq k-1}$, wobei für $x$ ausschließlich Elemente eines endlichen Körpers $\field{p}[n]$ substituiert werden. Ein Eintrag $x^{ij}$ kann somit als Monom aus dem Polynomring $\field{p}[n][X]$ verstanden werden. Aufgrund der Abgeschlossenheit des Polynomrings ist der Minor $\det M_{IJ}$ ebenfalls ein Polynom. Da $M$ und ihre Submatrizen wiederum als Submatrizen der unendlich größen Matrix $\left( x^{ij} \right)_{i,j \in \mathbb{Z}}$ aufgefasst werden können, sei im Folgenden $M$ stets eben diese Matrix. Dies vereinfacht einige Aussagen und Erläuterungen in diesem Kapitel und ermöglicht allgemeinere Indexmengen $I,J \subseteq \mathbb{Z}$ zu betrachten.
+Die Matrix $M$ ist von der verallgemeinerten Form $\left( x^{ij} \right)_{i,j \mathbb{Z}}$, wobei für $x$ ausschließlich invertierbare Elemente eines endlichen Körpers $\field{p}[n]$ substituiert werden. Die Wahl von beliebigen ganzzahligen Exponenten vereinfacht einige Aussagen und Erläuterungen in diesem Kapitel.
 
 Für zum Beispiel $I,J = \{-2, \dots, 4\}$ sieht $M_{IJ}$ folgendermaßen aus.
 \begin{equation*}
@@ -44,7 +41,7 @@ Durch das Reduzieren der Exponenten um die entsprechende Gruppenordnung, erhält
     \end{pmatrix}
 \end{equation*}
 
-besteht. Für allgemeine $\field{p}[n]$ haben die Blöcke diese Form.
+besteht. Für allgemeine $\field{p}[n]$ haben diese Blöcke diese Form.
 
 \begin{equation*}
     \begin{pmatrix}
@@ -120,7 +117,7 @@ Die \Cref{satz:translation,satz:skalierung} lassen sich im folgenden Korollar zu
     \end{align*}
 \end{proof}
 
-Die Zusammenhänge zwischen transformierten Indexmengen können über Graphen dargestellt werden. Für festes $a \in \field{p}[n]$ sei $G_a$ der Graph mit Knotenmenge $V=\{I \in\mathcal{P}(\mathbb{Z}) \mid |I| \in \mathbb{N}_+\}$ und Kantenmenge $E = \{(I,J)\mid (\det M_{IJ})(a) = 0\}$. Der Graph $G_a$ enthält somit genau dann die Kante $(I,J)$, falls die Submatrix $M_{IJ}(a)$ nicht invertierbar ist. 
+Die Zusammenhänge zwischen transformierten Indexmengen können über Graphen dargestellt werden. Für festes $a \in \field{p}[n]^\times$ sei $G_a$ der Graph mit Knotenmenge $V=\{I \in\mathcal{P}(\mathbb{Z}) \mid |I| \in \mathbb{N}_+\}$ und Kantenmenge $E = \{(I,J)\mid (\det M_{IJ})(a) = 0\}$. Der Graph $G_a$ enthält somit genau dann die Kante $(I,J)$, falls die Submatrix $M_{IJ}(a)$ nicht invertierbar ist. 
 
 Aus \Cref{satz:translation} folgt, dass eine Kante $(I,J)$ alle weiteren Kanten $(I+m,J)$ für $m\in \mathbb{Z}$ induziert. Alle Knoten der Form $I+m$ besitzen somit in $G_a$ die selben adjazenten Knoten. Dieses Verhalten ist in \Cref{fig:subgraphs} dargestellt. Falls die Indexmengen $I$ und $J$ unterschiedlich sind, ergibt sich der vollständig bipartite Teilgraph aus \Cref{fig:biclique-graph}. Falls jedoch $I$ und $J$ gleich sind, entsteht der in \Cref{fig:complete-graph} dargestellte vollständige Teilgraph, in dem alle Knoten der Form $I+m$ miteinander verbunden sind. 
 
@@ -199,21 +196,16 @@ Aus \Cref{satz:translation} folgt, dass eine Kante $(I,J)$ alle weiteren Kanten 
     \label{fig:subgraphs}
 \end{figure}
 
-Aus \Cref{satz:skalierung} ergeben sich weitere Symmetrien in $G_a$. Demnach sind folgende Aussagen äquivalent:
+Sei $G[V]$ der durch die Knotenmenge $V$ induzierte Teilgraph von $G$. Aus \Cref{satz:skalierung} ergeben sich weitere Symmetrien in $G_a$. Demnach sind die folgenden Aussagen äquivalent
 
 \begin{align*}
-    (\det{} M_{I,J})(a) &= 0 \\
-    (\det{} M_{-I,-J})(a) &= 0 \\
-    (\det{} M_{-I,J})(a^{-1}) &= 0 \\
-    (\det{} M_{I,-J})(a^{-1}) &= 0
+    &(\det{} M_{I,J})(a) = 0 \\
+    \iff &(\det{} M_{-I,-J})(a) = 0 \\
+    \iff &(\det{} M_{-I,J})(a^{-1}) = 0 \\
+    \iff &(\det{} M_{I,-J})(a^{-1}) = 0
 \end{align*}
 
-Zu den in \Cref{fig:subgraphs} beschriebenen Teilgraphen aus $G_a$ sind die folgende Teilgraphen isomorph:
 
-\begin{align*}
-    &\text{Zu } -I \text{ und } -J \text{ in } G_a \\
-    &\text{Zu } -I \text{ und } J \text{ in } G_{a^{-1}} \\
-    &\text{Zu } I \text{ und } -J \text{ in } G_{a^{-1}} \\
-\end{align*}
+und die induzierten Teilgraphen $G_a[I \cup J]$, $G_a[-I \cup -J]$, $G_{a^{-1}}[-I \cup J]$, $G_{a^{-1}}[I \cup -J]$ isomorph.
 
 Somit induziert die bijektive Abbildung $f:V \to V, I \mapsto -I$ einen nicht trivialen Graphautomorphismus und einen Graphisomorphismus zwischen $G_a$ und $G_{a^{-1}}$.
