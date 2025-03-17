@@ -1,14 +1,14 @@
-\section{Grundlagen}
+\section{Grundlagen} \label{sec:grundlagen}
 
-In diesem Kapitel werden die für den Hauptteil benötigten Definitionen und Sätze über endliche Körper geklärt. Die Konstruktion dieser Strukturen geschieht über Restklassenringe der ganzen Zahlen und über spezielle Polynomringe. Abschließend werden Untergruppen dieser Körper und ihre zyklische Gruppen, Erzeuger und Ordnungen untersucht.
+In diesem Kapitel werden die für den Hauptteil benötigten Definitionen und Sätze über endliche Körper geklärt. Die Konstruktion dieser Strukturen geschieht über Restklassenringe der ganzen Zahlen und über spezielle Polynomringe. Abschließend werden Untergruppen dieser Körper und ihre zyklischen Gruppen, Erzeuger und Ordnungen untersucht.
 
 Die ersten grundlegenden endlichen Körper lassen sich über Restklassenringe der ganzen Zahlen konstruieren. Diese werden formal über Restabbildungen definiert.
 
 \begin{satz}[{\cite[S. 6]{Kurzweil}}]
-    Sei $\mathbb{Z}_n := \{0,\dots,n-1\}$. Dann existieren für jedes $a \in \mathbb{Z}$ eindeutig bestimmte Zahlen $f \in \mathbb{Z}$ und $r \in \mathbb{Z}_n$ mit $a = n \cdot f + r$.
+    Sei $n \in \mathbb{N}$ und $\mathbb{Z}_n \coloneqq \{0,\dots,n-1\}$. Dann existieren für jedes $a \in \mathbb{Z}$ eindeutig bestimmte Zahlen $f \in \mathbb{Z}$ und $r \in \mathbb{Z}_n$ mit $a = n \cdot f + r$.
 \end{satz}
 
-Sei zum Beispiel $n = 4$. Dann gelten folgende Darstellung.
+Sei zum Beispiel $n = 4$. Dann gelten folgende Darstellungen:
 
 \begin{align*}
     -2 &= 4 \cdot -1 + 2 \\
@@ -21,13 +21,13 @@ Sei zum Beispiel $n = 4$. Dann gelten folgende Darstellung.
     5 &= 4 \cdot 1 + 1
 \end{align*}
 
-Die Zahl $r$ wird als der Rest von $a$ modulo $n$ bezeichnet. Im Folgenden wird dies mit $r = a \bmod n$ abgekürzt. Die Abbildung $\varrho_n : \mathbb{Z} \rightarrow \mathbb{Z}_n$, welche jeder ganzen Zahl ihren Rest zuordnet, ist die Restabbildung. Mit ihr kann aus der Menge $\mathbb{Z}_n$ einen Ring konstruiert werden.
+Die Zahl $r$ wird als der \emph{Rest} von $a$ modulo $n$ bezeichnet. Im Folgenden wird dies mit $r = a \bmod n$ abgekürzt. Die Abbildung $\varrho_n : \mathbb{Z} \rightarrow \mathbb{Z}_n$, welche jeder ganzen Zahl ihren Rest modulo $n$ zuordnet, ist die \emph{Restabbildung}. Mit ihr kann aus der Menge $\mathbb{Z}_n$ ein Ring konstruiert werden.
 
 \begin{satz}[{\cite[S. 9]{Kurzweil}}]
-    Sei $n \in \mathbb{N}$. Die Menge $\mathbb{Z}_n$ zusammen mit der Multiplikation $a \otimes b \mapsto \varrho_n(a \cdot b)$ und der Addition $a \oplus b \mapsto \varrho_n(a + b)$ bildet einen Ring. Dieser wird als Restklassenring modulo $n$ bezeichnet.
+    Sei $n \in \mathbb{N}$. Die Menge $\mathbb{Z}_n$ zusammen mit der Multiplikation $a \otimes b = \varrho_n(a \cdot b)$ und der Addition $a \oplus b = \varrho_n(a + b)$ bilden einen Ring. Dieser wird als Restklassenring modulo $n$ bezeichnet.
 \end{satz}
 
-Die Operationen im Restklassenring nutzen die von den ganzen Zahlen bekannte Addition und Multiplikation mit anschließenden Modulodivision. \Cref{table:tableZ4,table:tableZ5} zeigen die Addition- und Multiplikationstafel für $n=4$ und $n=5$. In diesen können einige der Ringaxiome verifiziert werden. Zum Beispiel existieren jeweils die neutralen Elemente $0$ und $1$. Außerdem besitzt jedes Element eine additiv Inverses. Bezüglich der Multiplikation existieren jedoch nicht immer inverse Elemente. Dies zeigt, dass der $\mathbb{Z}_n$ im Allgemeinen keinen Körper bildet. Für welche natürlichen Zahlen das dennoch der Fall ist, gibt der folgende Satz an.
+Die Operationen im Restklassenring nutzen die von den ganzen Zahlen bekannte Addition und Multiplikation mit anschließender Modulodivision. \Cref{table:tableZ4,table:tableZ5} zeigen die Additions- und Multiplikationstafel für $n=4$ und $n=5$. In diesen können einige der Ringaxiome verifiziert werden. Zum Beispiel existieren jeweils die neutralen Elemente $0$ und $1$. Außerdem besitzt jedes Element ein additiv Inverses. Bezüglich der Multiplikation existieren jedoch nicht immer inverse Elemente. Dies zeigt, dass $\mathbb{Z}_n$ im Allgemeinen keinen Körper bildet. Der folgende Satz gibt an, für welche natürlichen Zahlen das dennoch der Fall ist.
 
 \begin{table}[]
     \centering
@@ -48,7 +48,7 @@ Die Operationen im Restklassenring nutzen die von den ganzen Zahlen bekannte Add
         2 & 0  & 2 & 0 & 2 \\ \hline
         3 & 0  & 3 & 2 & 1 \\ \hline
         \end{tabular}
-    \caption{Addition- und Multiplikationstafel für den Restklassenring $\mathbb{Z}_4$ \cite[S. 10]{Kurzweil}} \label{table:tableZ4}
+    \caption{Additions- und Multiplikationstafel für den Restklassenring $\mathbb{Z}_4$ \cite[S. 10]{Kurzweil}} \label{table:tableZ4}
 \end{table}
 
 \begin{table}[]
@@ -72,38 +72,37 @@ Die Operationen im Restklassenring nutzen die von den ganzen Zahlen bekannte Add
         3 & 0  & 3 & 1 & 4 & 2 \\ \hline
         4 & 0  & 4 & 2 & 2 & 1 \\ \hline
         \end{tabular}
-    \caption{Addition- und Multiplikationstafel für den Restklassenring $\mathbb{Z}_5$ \cite[S. 10]{Kurzweil}} \label{table:tableZ5}
+    \caption{Additions- und Multiplikationstafel für den Restklassenring $\mathbb{Z}_5$ \cite[S. 10]{Kurzweil}} \label{table:tableZ5}
 \end{table}
 
 \begin{satz}[{\cite[S. 12]{Kurzweil}}]
-    $\mathbb{Z}_n$ ist genau dann ein Körper, wenn $n$ eine Primzahl ist.
+    $\mathbb{Z}_n$ ist genau dann ein Körper, wenn $n$ Primzahl ist.
 \end{satz}
 
-In diesem Fall wird der Körper als $\field{p}$ bezeichnet. Von den beiden Beispielen $\mathbb{Z}_4$ und $\mathbb{Z}_5$ ist somit nur der zweite ein Körper, da die $5$ Primzahl ist.
-
-Die über Restklassenringen konstruierten Körper besitzen alle die Mächtigkeit eine Primzahl. Darauf aufbauend können mithilfe von Polynomen weitere endliche Körper gebildet werden. 
+In diesem Fall wird der Körper als $\field{p}$ bezeichnet. Von den beiden Beispielen $\mathbb{Z}_4$ und $\mathbb{Z}_5$ ist somit nur der Zweite ein Körper, da $5$ Primzahl ist.
+Die wie oben konstruierten Körper besitzen alle die Mächtigkeit eine Primzahl. Darauf aufbauend können mithilfe von Polynomen weitere endliche Körper unterschiedlicher Mächtigkeit gebildet werden. 
 Analog zu den ganzen Zahlen wird dafür zunächst ein Ring erzeugt.
 
 \begin{satz}[{\cite[S. 22]{Kurzweil}}]
-    Sei $\mathbb{F}$ Körper. Die Menge $\mathbb{F} {[X]}$ der Polynome mit Koeffizienten in $\mathbb{F}$ zusammen mit der von Polynomen bekannten Addition und Multiplikation ist ein Ring.
+    Sei $\mathbb{F}$ Körper. Die Menge $\mathbb{F} {[X]}$ der Polynome in der Variablen $X$ mit Koeffizienten in $\mathbb{F}$ zusammen mit der von Polynomen bekannten Addition und Multiplikation bilden einen Ring.
 \end{satz}
 
-Auch für diese Menge lässt sich eine Modulodivison mit Restabbildung definieren. 
+Auch für diese Menge lässt sich eine Modulodivision mit Restabbildung definieren. 
 
 \begin{satz}[{\cite[S. 26]{Kurzweil}}]
-    Sei $\field{n} {[X]} := \{A \in \mathbb{F} {[X]} \mid \mathrm{grad}(A) < n\}$ die Menge der Polynome vom Grad kleiner als $n$. Sei weiter $N \in \mathbb{F} {[X]}$ mit $n = \mathrm{grad}(N)$. Dann existieren für jedes $A \in \mathbb{F} {[X]}$ eindeutig bestimmte Polynome $F \in \mathbb{F} {[X]}$ und $R \in \field{n} {[X]}$ mit $A = N \cdot F + R$.
+    Sei $n\in \mathbb{N}$ und $\field{} {[X]}_n \coloneqq \{A \in \mathbb{F} {[X]} \mid \mathrm{grad}(A) < n\}$ die Menge der Polynome mit Koeffizienten in $\field{}$ vom Grad kleiner als $n$. Sei weiter $N \in \mathbb{F} {[X]}$ ein Polynom mit $n = \mathrm{grad}(N)$. Dann existieren für jedes $A \in \mathbb{F} {[X]}$ eindeutig bestimmte Polynome $F \in \mathbb{F} {[X]}$ und $R \in \field{} {[X]}_n$ mit $A = N \cdot F + R$.
 \end{satz}
 
 %Vllt Beispiel für Polynomdivision
 
-Das Polynom $R$ wird ebenfalls als der Rest von $A$ modulo $N$ bezeichnet, was wiederum mit $R = A \bmod N$ abgekürzt wird. Mithilfe der Restabbildung $\varrho_N : \mathbb{F} {[X]} \rightarrow \field{n} {[X]}$, welche jedem Polynom ihren Rest zuordnet, lässt sich wieder ein Ring erzeugen.
+Das Polynom $R$ wird ebenfalls als der \emph{Rest} von $A$ modulo $N$ bezeichnet, was wiederum mit $R = A \bmod N$ abgekürzt wird. Mithilfe der \emph{Restabbildung} $\varrho_N : \mathbb{F} {[X]} \rightarrow \field{} {[X]}_n$, welche jedem Polynom ihren Rest modulo $N$ zuordnet, lässt sich wieder ein Ring erzeugen.
 
 \begin{satz}[{\cite[S. 28]{Kurzweil}}]
-    Sei $N \in \mathbb{F} {[X]}$ mit $n = \mathrm{grad}(N)$. Die Menge $\field{n} {[X]}$ zusammen mit der Multiplikation $A \otimes B \mapsto \varrho_N(A \cdot B)$ und der Addition $A \oplus B \mapsto \varrho_N(A + B)$ bildet einen Ring. Dieser wird als Polynomring modulo $N$ bezeichnet und mit $\field{N} {[X]}$ abgekürzt.
+    Sei $N \in \mathbb{F} {[X]}$ mit $n = \mathrm{grad}(N)$. Die Menge $\field{} {[X]}_n$ zusammen mit der Multiplikation $A \otimes B = \varrho_N(A \cdot B)$ und der Addition $A \oplus B = \varrho_N(A + B)$ bilden einen Ring. Dieser wird als Polynomring modulo $N$ bezeichnet und mit $\field{N} {[X]}$ abgekürzt.
 \end{satz}
 
-Falls $N \in \mathbb{F} {[X]}$ Grad $n$ hat und der Körper $\mathbb{F}$ endlich mit $p$ Elementen ist, besitzt der $\field{N} {[X]}$ die Mächtigkeit $p^n$.
-Sei zum Beispiel $\mathbb{F} = \field{2}$ und $N$ ein Polynom vom Grad 2. Dann umfasst der $\field{N} {[X]}$ alle 4 Polynome vom Grad kleiner als 2. \Cref{table:tableF41,table:tableF42} zeigen die Addition- und Multiplikationstafeln für $N=x^2 + x$ und $N= x^2 + x + 1$.
+Falls $N \in \mathbb{F} {[X]}$ Grad $n$ hat und der Körper $\mathbb{F}$ endlich mit $p$ Elementen ist, besitzt $\field{N} {[X]}$ die Mächtigkeit $p^n$.
+Sei zum Beispiel $\mathbb{F} = \field{2}$ und $N$ ein Polynom vom Grad 2. Dann umfasst $\field{N} {[X]}$ alle 4 Polynome vom Grad kleiner als 2. \Cref{table:tableF41,table:tableF42} zeigen die Additions- und Multiplikationstafeln für $N=x^2 + x$ und $N= x^2 + x + 1$.
 
 \begin{table}[]
     \centering
@@ -124,7 +123,7 @@ Sei zum Beispiel $\mathbb{F} = \field{2}$ und $N$ ein Polynom vom Grad 2. Dann u
         x   & 0 & x     & x     & 0 \\ \hline
         x+1 & 0 & x+1   & 0     & x+1 \\ \hline
         \end{tabular}
-    \caption{Addition- und Multiplikationstafel für den Polynomring $\field{N} {[X]}$ für $N=x^2 + x$ und $\field{} = \field{2}$} \label{table:tableF41}
+    \caption{Additions- und Multiplikationstafel für den Polynomring $\field{N} {[X]}$ für ${N=x^2 + x}$ und $\field{} = \field{2}$} \label{table:tableF41}
 \end{table}
 
 \begin{table}[]
@@ -145,24 +144,24 @@ Sei zum Beispiel $\mathbb{F} = \field{2}$ und $N$ ein Polynom vom Grad 2. Dann u
         x   & 0 & x     & x + 1& 1 \\ \hline
         x+1 & 0 & x+1   & 1     & x \\ \hline
         \end{tabular}
-    \caption{Addition- und Multiplikationstafel für den Polynomring $\field{N} {[X]}$ für $N=x^2 + x + 1$ und $\field{} = \field{2}$} \label{table:tableF42}
+    \caption{Additions- und Multiplikationstafel für den Polynomring $\field{N} {[X]}$ für ${N=x^2 + x + 1}$ und $\field{} = \field{2}$} \label{table:tableF42}
 \end{table}
 
-Auch für diese Ringe können einige Ringaxiome verifiziert werden. Die konstanten Polynome $0$ und $1$ sind die neutralen Elemente. Offensicht existieren nicht immer multiplikativ inverse Element, sodass auch der $\field{N} {[X]}$ im Allgemeinen kein Körper ist. Die Eigenschaft, welche das Polynom $N$ erfüllen muss, damit der $\field{N} {[X]}$ ein Körper ist, wird im folgenden Abschnitt betrachtet.
+Auch für diese Ringe können einige Ringaxiome verifiziert werden. Die konstanten Polynome $0$ und $1$ sind die neutralen Elemente. Offensicht existieren nicht immer multiplikativ inverse Elemente, sodass auch $\field{N} {[X]}$ im Allgemeinen kein Körper ist. Die Eigenschaft, welche das Polynom $N$ erfüllen muss, damit $\field{N} {[X]}$ ein Körper ist, wird im folgenden Abschnitt betrachtet.
 
-Analog zur Teilbarkeit von Primzahlen wird dazu die Teilbarkeit von Polynomen untersucht. Seien $A,B \in \mathbb{F} {[X]}$. $A$ heißt Teiler von $B$, falls ein Polynom $F \in \mathbb{F} {[X]}$ mit $B = A \cdot F$ existiert. A heißt trivialer Teiler, wenn $\grad{A} = 0$ oder $\grad{F} = 0$ gelten. Eine Zerlegung mit einem trivialen Teiler existiert für jedes Polynom. Sei zum Beispiel $\lambda \in \field{}$  der Leitkoeffizient von $A$. Dann ist $\lambda^{-1}A = F$ das zu $A$ normierte Polynom und es gilt $A = \lambda\cdot F$.
+Analog zur Teilbarkeit von Primzahlen wird dazu die Teilbarkeit von Polynomen untersucht. Seien $A,B \in \mathbb{F} {[X]}$. $A$ heißt \emph{Teiler} von $B$, falls ein Polynom $F \in \mathbb{F} {[X]}$ mit $B = A \cdot F$ existiert. A heißt \emph{trivialer Teiler}, wenn $\grad{A} = 0$ oder $\grad{F} = 0$ gelten. Eine Zerlegung mit einem trivialen Teiler existiert für jedes Polynom. Sei zum Beispiel $\lambda \in \field{}$  der Leitkoeffizient von $A$. Dann ist $\lambda^{-1}A = F$ das zu $A$ normierte Polynom und es gilt $A = \lambda\cdot F$.
 
-Sei im Folgenden $\field{} = \field{3}$ und $A=2x^2 + 1 \in \mathbb{F} {[X]}$. Dann lässt sich das Polynom $A$ darstellen als $2(x+2)(x+1) = 2x^2 + 6x + 4 = 2x^2 + 1$. Für ein anderes Polynom $A=x^2 + 1$ existieren jedoch nur triviale Zerlegungen. Die Teilbarkeit ist direkt vom gewählten Körper abhängig. Für den $\field{2}$ lässt sich dasselbe Polynom $A=x^2 + 1$ wiederum als $(x+1)(x-1)$ darstellen.
+Sei im Folgenden $\field{} = \field{3}$ und $A=2x^2 + 1 \in \mathbb{F} {[X]}$. Dann lässt sich das Polynom $A$ darstellen als $2(x+2)(x+1) = 2x^2 + 6x + 4 = 2x^2 + 1$. Für ein anderes Polynom $B=x^2 + 1$ existieren jedoch nur triviale Zerlegungen. Die Teilbarkeit ist direkt vom gewählten Körper abhängig. Über $\field{2}$ lässt sich dasselbe Polynom $B=x^2 + 1$ wiederum als $(x+1)^2$ darstellen.
 
-Ein Polynom heißt irreduzibel, falls es nur triviale Teiler besitzt. Die Irreduzibelität ist genau die Eigenschaft, welche ein Polynom $N$ erfüllen muss, damit der $\field{N} {[X]}$ ein Körper ist. 
+Ein Polynom aus $\field{} {[X]}$ heißt \emph{irreduzibel} über $\field{}$, falls es in $\field{} {[X]}$ nur triviale Teiler besitzt. Die Irreduzibilität ist genau die Eigenschaft, welche ein Polynom $N$ erfüllen muss, damit $\field{N} {[X]}$ ein Körper ist. 
 
 \begin{satz}[{\cite[S. 46]{Kurzweil}}]
-    $\field{N} {[X]}$ ist genau dann ein Körper, wenn $N \in \field{}{[X]}$ irreduzibel ist.
+    $\field{N} {[X]}$ ist genau dann ein Körper, wenn $N \in \field{}{[X]}$ irreduzibel über $\field{}$ ist.
 \end{satz}
 
 Somit ist geklärt, weshalb die Beispiele von \Cref{table:tableF41,table:tableF42} einen Körper oder nur einen Ring bilden. Für $N=x^2 + x$ und $\field{} = \field{2}$ existiert die Zerlegung $x(x+1)$, aus der sich zusätzlich die Polynome $x$ und $x+1$ als Nullteiler ergeben. Für $N=x^2 + x + 1$ existiert keine solche Zerlegung, sodass für dieses Polynom ein Körper entsteht.
 
-Mithilfe von irreduziblen Polynomen lassen sich nun endliche Körper der Mächtigkeit $p^n$ für eine Primzahl $p$ konstruieren. Ob für jeden Körper $\field{p}$ ein solches irreduzibles Polynom existiert und wie die Körper zu zwei irreduziblen Polynomen vom selben Grad zusammenhängen, ist noch nicht geklärt. Dazu geben die folgenden beiden Sätze Aufschluss.
+Mithilfe von irreduziblen Polynomen lassen sich nun endliche Körper der Mächtigkeit $p^n$ für eine Primzahl $p$ konstruieren. Zu klären bleibt die Existenz beliebiger endlicher Körper mit genannter Mächtigkeit und die Eindeutigkeit dieser für verschiedene Polynome gleichen Grades. Dazu geben die folgenden beiden Sätze Aufschluss.
 
 \begin{satz}[Existenzsatz {\cite[S. 141]{Kurzweil}}]
     Sei $p^n$ eine Primzahlpotenz. Dann existiert ein endlicher Körper mit $p^n$ Elementen.
@@ -172,34 +171,32 @@ Mithilfe von irreduziblen Polynomen lassen sich nun endliche Körper der Mächti
     Sei $p^n$ eine Primzahlpotenz. Bis auf Isomorphie existiert nur ein endlicher Körper mit $p^n$ Elementen.
 \end{satz}
 
-Aus der Eindeutigkeit folgt, dass die konkrete Wahl des irreduziblen Polynoms weniger relevant ist. Wir schreiben deshalb im Folgenden $\field{p}[n]$ für den Körper mit $p^n$ Elementen ohne das irreduzible Polynom anzugeben. Im letzten Abschnitt dieses Kapitels wollen wir auf für diese Arbeit notwendige Eigenschaften der endlichen Körper eingehen.
+Aus dem Eindeutigkeitssatz folgt, dass sich zwei endliche Körper gleicher Mächtigkeit strukturell äquivalent verhalten. Demnach ist das Angeben des irreduziblen Polynoms nur bei konkreten Rechnungen relevant. Deshalb wird im Folgenden $\field{p}[n]$ für den Körper mit $p^n$ Elementen geschrieben, ohne das irreduzible Polynom zu nennen. Der Existenzsatz gibt zudem an, dass auch jeder $\field{p}[n]$ für eine Primzahl $p$ und beliebigem $n \in \mathbb{N}$ existiert. Im letzten Abschnitt dieses Kapitels wird auf für diese Arbeit notwendige Eigenschaften endlicher Körper eingegangen.
 
-Aufgrund der Struktur der im Hauptteil betrachteten Matrizen sind Potenzen der Körperelemente interessant. Die Menge $\field{}^\times := \field{} \setminus \{0\}$ wird als multiplikative Gruppe von $\field{}$ bezeichnet und erfüllt dahingehend nützliche Eigenschaften. Sie bildet eine Gruppe, da sie nullteilerfrei ist, sowie Inverse und ein neutrales Element enthält.
+Da im Hauptteil dieser Arbeit Matrizen der Form $\left( x^{ij} \right)_{i \in I,j \in J}$ für zwei endliche Teilmengen $I,J \subseteq \mathbb{Z}$ betrachtet werden, sind Potenzen von Körperelementen interessant. Die Menge $\field{}^\times \coloneqq \field{} \setminus \{0\}$ wird als \emph{multiplikative Gruppe} von $\field{}$ bezeichnet und erfüllt dahingehend nützliche Eigenschaften. Sie bildet eine Gruppe bezüglich der Multiplikation, da sie nullteilerfrei ist, sowie Inverse und ein neutrales Element enthält.
 
 \begin{definition}[{\cite[S. 83]{Kurzweil}}]
-    Sei $G$ Gruppe. $G$ heißt zyklische Gruppe, falls ein $a \in G$ existiert, sodass $G$ nur aus Potenzen von $a$ besteht, also $G = \langle a \rangle := \{ a^i \mid i \in \mathbb{Z}\}$ gilt. Das Element $a$ heißt dann Erzeuger von $G$.
+    Sei $G$ Gruppe. $G$ heißt zyklische Gruppe, falls ein $a \in G$ existiert, sodass $G$ nur aus Potenzen von $a$ besteht, also $G = \langle a \rangle \coloneqq \{ a^i \mid i \in \mathbb{Z}\}$ gilt. Das Element $a$ heißt dann \emph{Erzeuger} von $G$.
 \end{definition}
 
-Im Folgenden wird die Gruppe $\field{7}^\times$ betrachtet. Die Mengen $\langle a \rangle$ sehen wie folgt aus:
+Im Folgenden wird die Gruppe $\field{7}^\times$ betrachtet. Die Mengen $\langle a \rangle$ sehen wie folgt aus.
 
 \begin{align*}
     \langle 1 \rangle &= \{ 1\} \\
-    \langle 2 \rangle &= \{ 2,4,1\} \\
-    \langle 3 \rangle &= \{ 3,2,6,4,5,1\} \\
-    \langle 4 \rangle &= \{ 4,2,1\} \\
-    \langle 5 \rangle &= \{ 5,4,6,2,3,1\} \\
-    \langle 6 \rangle &= \{ 6,1\} \\
+    \langle 2 \rangle &= \{ 1,2,4\} \\
+    \langle 3 \rangle &= \{ 1,2,3,4,5,6\} \\
+    \langle 4 \rangle &= \{ 1,2,4\} \\
+    \langle 5 \rangle &= \{ 1,2,3,4,5,6\} \\
+    \langle 6 \rangle &= \{ 1,6\} \\
 \end{align*}
 
-Da $\field{7}^\times = \langle 3 \rangle = \langle 5 \rangle$ gelten, ist $\field{7}^\times$ eine zyklische Gruppe mit den Erzeugern $3$ und $5$. Der folgenden Satz wird zeigen, dass für jede multiplikative Gruppe $\field{}^\times$ mindestens ein Erzeuger existiert.
+Da $\field{7}^\times = \langle 3 \rangle = \langle 5 \rangle$ gilt, ist $\field{7}^\times$ eine zyklische Gruppe mit Erzeugern $3$ und $5$. Der folgende Satz klärt den Zusammenhang zwischen multiplikativen Gruppen endlicher Körper und zyklischen Gruppen.
 
 \begin{satz}[{\cite[S. 83]{Kurzweil}}]
-    Sei $\field{}$ Körper. Dann ist $\field{}^\times$ und jede weitere endliche Untergruppe eine zyklische Gruppe. 
+    Sei $\field{}$ Körper. Dann ist $\field{}^\times$ und jede weitere endliche Untergruppe von $\field{}^\times$ eine zyklische Gruppe.
 \end{satz}
 
-Die anderen Mengen $\langle a \rangle$ im obigen Beispiel bilden zwar nicht die gesamte multiplikative Gruppe, jedoch eine Untergruppe, die per Konstruktion zyklisch mit Erzeuger $a$ ist. Da das neutrale Element in jeder Gruppe enthalten ist, existiert zu jedem Erzeuger $a$ ein Exponent $i \in \mathbb{Z}$ mit $a^i = 1$. Da auch die Vielfachen $k\cdot i$ für $k\in \mathbb{Z}$, die Gleichung $a^{ki} = {(a^i)}^k = 1^k = 1$ erfüllen, wird das kleinste $i \in \mathbb{N}_+$ mit $a^i = 1$ als die Ordnung von $a$ bezeichnet und mit $\ord{a}$ abgekürzt.
-
-Für die Elemente aus dem $\field{7}^\times$ sind dies konkret:
+Demnach besitzt die multiplikative Gruppe $\field{}^\times$ mindestens einen Erzeuger. Die anderen Mengen $\langle a \rangle$ im obigen Beispiel bilden zwar nicht die gesamte multiplikative Gruppe, jedoch Untergruppen, die per Konstruktion zyklisch mit Erzeuger $a$ sind. Da das neutrale Element in jeder Untergruppe enthalten ist, existiert zu jedem Erzeuger $a$ ein Exponent $i \in \mathbb{Z}$ mit $a^i = 1$. Das kleinste $i \in \mathbb{N}_+$ mit $a^i = 1$ wird als die \emph{Ordnung} von $a$ bezeichnet und mit $\ord{a}$ abgekürzt. Für die Elemente aus $\field{7}^\times$ sind dies konkret:
 
 \begin{align*}
     \ord{1} &= 1 \\
@@ -215,17 +212,17 @@ Aus der Existenz der Ordnungen ergibt sich direkt folgender nützlicher Satz.
 \begin{satz}[{\cite[S. 86]{Kurzweil}}] \label{satz:cyclicity}
     Sei $G$ zyklische Gruppe und $a \in G$ ein Element mit Ordnung $o = \ord{a}$. Dann gilt für $i \in \mathbb{Z}$:
     \begin{equation*}
-        a^i = a^r, \quad r = \varrho_o(i) \in \mathbb{Z}_o
+        a^i = a^{i+ko}, \quad k \in \mathbb{Z}
     \end{equation*}
 \end{satz}
 
-Die Potenzen der Gruppenelemente wiederholen sich zyklisch nach $\ord{a}$ Iterationen. Die Mächtigkeit der Untergruppe $\langle a \rangle$ stimmt folglich mit der Ordnung von $a$ überein. Ist $G$ eine zyklische Gruppe, so wird die Mächtigkeit $|G|$ auch als die Ordnung von $G$ bezeichnet.
+Die Potenzen der Gruppenelemente wiederholen sich zyklisch nach $\ord{a}$ Iterationen. Folglich stimmt die Mächtigkeit der Untergruppe $\langle a \rangle$ mit der Ordnung von $a$ überein. Ist $G$ eine zyklische Gruppe, so wird die Mächtigkeit $|G|$ auch als die Ordnung von $G$ bezeichnet.
 Der folgende Satz zeigt wie die Ordnungen von Unter- und Obergruppe zusammenhängen.
 
 \begin{satz}[{\cite[S. 87]{Kurzweil}}]
     Sei $G$ zyklische Gruppe und $a \in G$ ein Element mit Ordnung $o = \ord{a}$. Dann ist $o$ Teiler von $|G|$.
 \end{satz}
 
-Zusätzlich folgt, dass auch die Ordnungen alle Untergruppen Teiler von $|G|$ sind. Somit war klar, dass die Ordnungen aller Elemente des $\field{7}^\times$ in der Menge $\{1,2,3,6\}$ liegen müssen. Für beliebige endliche Körper $\field{p}[n]$ sind die Ordnungen aller Elemente der multiplikativen Gruppe Teiler von $p^n-1$.
+Zusätzlich folgt, dass auch die Ordnungen alle Untergruppen Teiler von $|G|$ sind. Somit ist klar, dass die Ordnungen aller Elemente vom $\field{7}^\times$ in der Menge $\{1,2,3,6\}$ liegen müssen. Für beliebige endliche Körper $\field{p}[n]$ sind die Ordnungen aller Elemente der multiplikativen Gruppe Teiler von $p^n-1$.
 
 Damit sind die notwendigen Grundlagen über endliche Körper geklärt. 

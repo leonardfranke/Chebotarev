@@ -14,11 +14,14 @@
 \usepackage{mathtools}
 \usepackage[unicode=true,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
- breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false, hidelinks]
  {hyperref}
 \usepackage[noabbrev,nameinlink, ngerman]{cleveref}
 
-\newtheorem{satz}{Satz}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+\newtheorem{satz}{Satz}[section]
 \newtheorem{lemma}[satz]{Lemma}
 \newtheorem{korollar}[satz]{Korollar}
 \theoremstyle{definition}
@@ -28,7 +31,6 @@
 \newcolumntype{C}{>{$}c<{$}}
 
 \newcommand{\grad}[1]{\mathrm{grad}(#1)}
-\renewcommand{\det}{\mathrm{det}\;}
 \NewDocumentCommand{\ord}{m o}{%
  \mathrm{ord}_{\IfValueT{#2}{{#2}}}(#1)%
 }
@@ -41,20 +43,33 @@
 
 \begin{document}
 
+\input{sections/Titelblatt}
+
+\begin{abstract}
+  
+\end{abstract}
+
+\tableofcontents
+
 \include{sections/Einleitung}
 
-\todo{Sortierung von I irrelevant, da Determinante alternierend ist}
+\input{sections/Grundlagen}
 
-\include{sections/Grundlagen}
+\input{sections/Indextransformationen}
 
-\todo{Chebotarev}
+\input{sections/SinguläreSubmatrizen}
 
-\include{sections/Indextransformationen}
+\input{sections/SpezielleIndexmengen}
 
-\include{sections/SinguläreSubmatrizen}
+\input{sections/Schluss}
 
-\include{sections/SpezielleIndexmengen}
+\todo{Formel optisch untersuchen}
 
+\todo{Frage: keine Artikel vor Mengen}
+\todo{Frage: triviale Schurpolys, Indexmengen gleicher Abstände}
+\todo{Fragen Formatierung Titelblatt, Inhaltsverzeichnis, Abstract, Section Page Break}
+\todo{Fragen: vielleicht X in Polynomen groß}
+\todo{Abschließend: Rechtschreibung}
 \bibliographystyle{plain}
 \bibliography{ref}
 

@@ -1,5 +1,7 @@
 \section{Einleitung}
 
+\todo{Thema kontrollieren}
+
 Diese Bachelorarbeit beschäftigt sich mit den Minoren verallgemeinerter Vandermondematrizen. Die betrachteten Matrizen besitzen die Form \begin{equation*}
     \left( x^{ij} \right)_{0\leq i,j \leq k-1} = \begin{pmatrix}
         1     & 1    & 1    & 1    &\cdots& 1 \\
@@ -10,12 +12,38 @@ Diese Bachelorarbeit beschäftigt sich mit den Minoren verallgemeinerter Vanderm
         1     &x^{k-1}&x^{2k-2}&x^{3k-3}&\cdots&x^{(k-1)(k-1)}
     \end{pmatrix},
 \end{equation*}
-wobei für $x$ stets Elemente eines endlichen Körpers $\field{p}[n]$ eingesetzt werden. Für gegebenes $k$ sind all die Elemente $a$ gesucht, sodass jede Untermatix von $\left( a^{ij} \right)_{0\leq i,j \leq k-1}$ invertierbar ist. 
-Diese Untermatizen ergeben sich dann aus der Wahl zweier gleich mächtiger Indexmengen $I,J \subseteq \{0, \dots, k-1\}$. Da für die relevanten Körperelemente auch negative Exponenten zulässig sind, wird im Hauptteil dieser Arbeit die unendliche Matrix $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$ betrachtet. Entsprechend werden diese Submatrizen mit endlichen Teilmengen $I,J \subseteq \mathbb{Z}$ indiziert.
+wobei für die Variable $x$ stets Elemente eines Körpers $\field{}$ eingesetzt werden. Für gegebenes $k$ sind all die Elemente $a$ des Körpers gesucht, sodass jede quadratische Submatrix von $\left( a^{ij} \right)_{0\leq i,j \leq k-1}$ invertierbar ist. Der Mathematiker Chebotarev beschäftige sich mit der Substitution von komplexen Zahlen. Konkret zeigt er im Jahr 1926, dass für primitive $p$-te Einheitswurzel (zum Beispiel $a=e^{2\pi i/p}$) genau dann alle quadratischen Submatrizen von $\left( a^{ij} \right)_{0\leq i,j \leq p-1}$ invertierbar sind, wenn $p$ Primzahl ist. Bis auf einen Vorfaktor entspricht dieses Beispiel genau der diskreten Fouriermatrix \cite{CheboProof}. Analog existiert eine Aussage über $p$-te primitive Einheitswurzeln endlicher Körper. Diese gilt jedoch nur für Primzahlpotenzen $q^{p-1}$ mit fester Ordnung $\ord{q}[p] = p-1$ und genügend großem $q$ \cite{CheboFiniteFields}.
+\todo{Schranke für q verstehen und einbauen}
 
-\begin{comment}
-    Ein Eintrag $x^{ij}$ kann als Monom aus dem Polynomring $\field{p}[n][X]$ verstanden werden. Aufgrund der Abgeschlossenheit der Polynomringe bilden die Minoren $\det M_{IJ}$ ebenfalls Polynome.
-\end{comment}
-    
-Für eine ähnliche Konstruktion über den komplexen Zahlen $\mathbb{C}$ gibt es bereits Resultate bezüglich der Minoren. Der Mathematiker Chebotarev zeigte 1926, dass für primitive $p$-te Einheitswurzel (zum Beispiel $a=e^{2\pi i/p}$) alle Untermatizen von $\left( a^{ij} \right)_{0\leq i,j \leq p-1}$ invertierbar sind, falls $p$ Primzahl ist. \cite{CheboProof}
-Analog existiert eine Aussage über $p$-te primitive Einheitswurzeln endlicher Körper. Diese gilt jedoch nur für spezielle Primzahlpotenzen $q^{p-1}$, bei denen $q$ sehr groß sein muss. \cite{CheboFiniteFields}
+Diese Arbeit betrachtet ebenfalls endliche Körper $\field{p}[n]$ und untersucht die Invertierbarkeit der Submatrizen für Körperelemente beliebiger Ordnung. Da die Strukturen der Submatrizen beim Substituieren der $0$ trivial sind, werden ausschließlich invertierbare Elemente aus $\field{p}[n]^\times$ eingesetzt. Konkret leben die betrachteten Matrizen im $(\field{p}[n]^\times [X])^{k \times k}$ und die Minoren demnach im Polynomring $\field{p}[n]^\times [X]$. Da für die invertierbaren Körperelemente auch ganzzahlige negative Exponenten definiert sind, wird im Hauptteil dieser Arbeit die unendliche Matrix $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$ analysiert. Die dazugehörigen Submatrizen werden mit jeweils zwei endlichen Teilmengen $I,J$ der ganzen Zahlen indiziert. Sei entsprechend $M_{IJ} \coloneqq \left( x^{ij} \right)_{i \in I,j \in J}$. Für zum Beispiel $I,J = \{-2, \dots, 4\}$ sieht diese folgendermaßen aus.
+\begin{equation*}
+    M_{IJ} = \begin{pmatrix}
+        x^4     & x^{2} & 1    & x^{-2} & x^{-4}& x^{-6}& x^{-8}\\
+        x^{2}   & x^{1} & 1    & x^{-1} & x^{-2}& x^{-3}& x^{-4}\\
+        1       & 1     & 1    & 1      & 1     & 1     & 1     \\
+        x^{-2}  & x^{-1}& 1    & x^{1}  & x^{2} & x^{3} & x^{4} \\
+        x^{-4}  & x^{-2}& 1    & x^{2}  & x^{4} & x^{6} & x^{8} \\
+        x^{-6}  & x^{-3}& 1    & x^{3}  & x^{6} & x^{9} & x^{12} \\
+        x^{-8}  & x^{-4}& 1    & x^{4}  & x^{8} & x^{12} & x^{16} \\
+    \end{pmatrix}
+\end{equation*}
+
+Die Sortierung beim Angeben der Indexmengen ist irrelevant, da das Austauschen mehrerer Zeilen oder Spalten bei den Determinanten nur zum Vorzeichenwechsel führt. Aufgrund von zyklischen Eigenschaften der multiplikativen Gruppe $\field{p}[n]^\times$ nimmt die unendliche Matrix $M$ stehts die Form einer Blockmatrix an. Für $\field{3}$, den Körper mit 3 Elementen, vereinfacht sich die bereits gezeigte Submatrix wie folgt.
+
+\todo{Blockmatrix vllt verschieben}
+
+\begin{equation*}
+    M_{IJ} = \left( \begin{array}{cc|ccc|cc}
+        x^1     & x^{2} & 1     & x^{1} & x^{2} & 1 & x^{1} \\
+        x^{2}   & x^{1} & 1     & x^{2} & x^{1} & 1 & x^{2} \\
+        \hline
+        1       & 1     & 1     & 1     & 1     & 1 & 1     \\
+        x^{1}   & x^{2} & 1     & x^{1} & x^{2} & 1 & x^{1} \\
+        x^{2}   & x^{1} & 1     & x^{2} & x^{1} & 1 & x^{2} \\
+        \hline
+        1       & 1     & 1     & 1     & 1     & 1 & 1     \\
+        x^1     & x^2   & 1     & x^1   & x^2   & 1 & x^1   \\
+    \end{array} \right)
+\end{equation*}
+
+Diese Arbeit ist wie folgt gegliedert. In \Cref{sec:grundlagen} werden die benötigten Grundlagen zu endlichen Körpern und zyklischen Gruppen geklärt. Der Einfluss von affinen Abbildungen auf die Indexmengen und den dazugehörigen Minoren wird in \Cref{sec:indextransformationen} untersucht. In \Cref{sec:singulaereSubmatrizen} wird ein hinreichendes Kriterium erarbeitet, das angibt, welche Indexmengen für eine feste Gruppenordnung zu singulären Submatrizen führen. Weitere spezielle Indexmengen, deren Invertierbarkeit sich nicht über die vorher gezeigten Sätze herleiten lässt, werden abschließend in \Cref{sec:spezielleIndexmengen} untersucht.
