@@ -1,6 +1,6 @@
 \section{Singuläre Submatrizen} \label{sec:singulaereSubmatrizen}
 
-Sei weiterhin $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$ die unendliche Matrix und $M_{IJ} \coloneqq \left( x^{ij} \right)_{i \in I,j \in J}$ die dazugehörige Submatrix zu den Indexmengen $I,J \subseteq \mathbb{Z}$. Diese Kapitel befasst sich mit der Invertierbarkeit der $M_{IJ}$ für gegebenes $a \in \field{p}[n]^\times$. Dazu wird ein hinreichendes Kriterium erarbeitet, das angibt, für welche Indexmengen die Submatrix $M_{IJ}$ nicht invertierbar ist. Wieder können Eigenschaften der zyklischen Gruppe $\field{p}[n]^\times$ ausgenutzt werden. Die in diesem Kapitel gezeigten Sätze basieren vorrangig auf der Gleichung
+Sei weiterhin $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$ die unendliche Matrix und $M_{IJ} \coloneqq \left( x^{ij} \right)_{i \in I,j \in J}$ die dazugehörige Submatrix zu den Indexmengen $I,J \subseteq \mathbb{Z}$. Dieses Kapitel befasst sich mit der Invertierbarkeit der $M_{IJ}$ für gegebenes $a \in \field{p}[n]^\times$. Dazu wird ein hinreichendes Kriterium erarbeitet, das angibt, für welche Indexmengen die Submatrix $M_{IJ}$ nicht invertierbar ist. Wieder können Eigenschaften der zyklischen Gruppe $\field{p}[n]^\times$ ausgenutzt werden. Die in diesem Kapitel gezeigten Sätze basieren vorrangig auf der Gleichung
 
 \begin{equation*}
     a^i = a^j \iff i = j \bmod \ord{a},
@@ -92,9 +92,9 @@ Dies ergibt sich aus der Faktorisierung von $10 = 5 \cdot 2$. Die Differenz ${i_
     Aus der linearen Abhängigkeit der beiden Spalten folgt $(\det M_{IJ})(a) = 0$.
 \end{proof}
 
-Für eine Indexmengen $I$ mit $|I| > \ord{a}$ existieren stets zwei Elemente $i$ und $i'$ mit $i = i' \bmod \ord{a}$. Da dadurch alle Bedingungen des gezeigten Lemmas erfüllt sind, folgt direkt $(\det M_{IJ})(a) = 0$. Es genügt somit Indexmengen zu untersuchen, deren Mächtigkeit kleiner als eine gewählte (Gruppen-)Ordnung ist.
+Für eine Indexmenge $I$ mit $|I| > \ord{a}$ existieren stets zwei Elemente $i$ und $i'$ mit $i = i' \bmod \ord{a}$. Da dadurch alle Bedingungen des gezeigten Lemmas erfüllt sind, folgt direkt $(\det M_{IJ})(a) = 0$. Es genügt somit, Indexmengen zu untersuchen, deren Mächtigkeit kleiner als eine gewählte (Gruppen-)Ordnung ist.
 
-Die \Cref{equation:all-equal}, dass alle Elemente einer Indexmenge in der selben Restklasse liegen müssen, ist eine starke Einschränkung in der Wahl der Indizes. Diese Anforderung kann abgeschwächt werden, wenn zusätzliche Bedingungen an die jeweils andere Indexmenge gestellt werden.
+Die \Cref{equation:all-equal}, dass alle Elemente einer Indexmenge in derselben Restklasse liegen müssen, ist eine starke Einschränkung in der Wahl der Indizes. Diese Anforderung kann abgeschwächt werden, wenn zusätzliche Bedingungen an die jeweils andere Indexmenge gestellt werden.
 
 \begin{satz} \label{satz:equal-columns-subs}
     Sei $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$. Seien weiter $I,J \subseteq \mathbb{Z}$ zwei Indexmengen und $a \in \field{p}[n]^\times$ mit der Ordnung $o = \ord{a} = v\cdot w$.
@@ -105,7 +105,7 @@ Die \Cref{equation:all-equal}, dass alle Elemente einer Indexmenge in der selben
 \begin{proof}
     Zur Bestimmung der Determinante wird eine Zeilenentwicklung über die Indizes $I'$ durchgeführt. 
 \begin{equation*}
-    (\det M_{IJ})(a) = \left( \sum_{\substack{J'\subseteq J:\\|J'| = |I'|}} (-1)^{\epsilon_{I'J'}} \left( \det M_{I'J'} \cdot \det M_{I\backslash I'\,J\backslash J'} \right) \right)(a) % \sum I' + \sum J'
+    (\det M_{IJ})(a) = \left( \sum_{\substack{J'\subseteq J:\\|J'| = |I'|}} (-1)^{\epsilon_{I'J'}} \left( \det M_{I'J'} \cdot \det M_{I\backslash I'\,J\backslash J'} \right) \right)(a)
 \end{equation*}
 Konkret hängen die Vorfaktoren $(-1)^{\epsilon_{I'J'}}$ von den Teilmengen $I'$ und $J'$ ab. Da $I'$ und alle $J'$ bereits die \Cref{equation:all-equal,equation:two-equal} erfüllen, kann \Cref{lemma:equal-columns} auf die Terme $\det M_{I'J'}$ angewendet werden. Somit ist jeder Summand gleich $0$ und die Aussage folgt.
 \end{proof}
