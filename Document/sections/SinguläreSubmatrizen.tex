@@ -1,8 +1,6 @@
 \section{Singuläre Submatrizen} \label{sec:singulaereSubmatrizen}
 
-Diese Kapitel befasst sich mit der Invertierbarkeit der $M_{IJ}$ für gegebenes $a \in \field{p}[n]^\times$. Dazu wird ein hinreichendes Kriterium erarbeitet, das angibt, für welche Indexmengen die Submatrix $M_{IJ}$ nicht invertierbar ist. 
-
-Wieder können Eigenschaften der zyklischen Gruppen ausgenutzt werden. Die in diesem Kapitel gezeigten Sätze basieren vorrangig auf der Gleichung
+Sei weiterhin $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$ die unendliche Matrix und $M_{IJ} \coloneqq \left( x^{ij} \right)_{i \in I,j \in J}$ die dazugehörige Submatrix zu den Indexmengen $I,J \subseteq \mathbb{Z}$. Diese Kapitel befasst sich mit der Invertierbarkeit der $M_{IJ}$ für gegebenes $a \in \field{p}[n]^\times$. Dazu wird ein hinreichendes Kriterium erarbeitet, das angibt, für welche Indexmengen die Submatrix $M_{IJ}$ nicht invertierbar ist. Wieder können Eigenschaften der zyklischen Gruppe $\field{p}[n]^\times$ ausgenutzt werden. Die in diesem Kapitel gezeigten Sätze basieren vorrangig auf der Gleichung
 
 \begin{equation*}
     a^i = a^j \iff i = j \bmod \ord{a},
@@ -25,8 +23,7 @@ Sei für die folgenden Beispiele stets $a = 2 \in \field{11}$ mit der Ordnung $\
     \end{pmatrix}.
 \end{equation*}
 
-Da die Differenz $i_4 - i_2 = 11 - 1 = 10$ der Ordnung von $a$ entspricht, unterscheiden sich die Exponenten in den Zeilen 2 und 4 um ein Vielfaches dieser Ordnung. Dadurch sind diese Zeilen äquivalent und $(\det M_{IJ})(a) = 0$. 
-
+Da die Differenz $i_4 - i_2 = 11 - 1 = 10$ der Ordnung von $a$ entspricht, unterscheiden sich die Exponenten in den Zeilen 2 und 4 um ein Vielfaches dieser Ordnung. Dadurch sind diese Zeilen äquivalent und $(\det M_{IJ})(a) = 0$.
 Seien nun $I=\{0,2,6,7\}$ und $J=\{0,2,4,6\}$. In diesen Indexmengen existieren keine zwei Elemente mit dem passenden Abstand von $10$. Die zweite und vierte Zeile der Submatrix sind dennoch wieder äquivalent.
 
 \begin{equation*}
@@ -43,7 +40,7 @@ Seien nun $I=\{0,2,6,7\}$ und $J=\{0,2,4,6\}$. In diesen Indexmengen existieren 
     \end{pmatrix}
 \end{equation*}
 
-Dies ergibt sich aus der Faktorisierung von $10 = 5 \cdot 2$. Die Differenz ${i_4 - i_2 = 7 - 2 = 5}$ entspricht dem ersten Faktor. Da alle Differenzen in $I$ ein Vielfaches der $2$ sein, unterscheiden sich die Exponenten in den Zeilen 2 und 4 wieder um ein Vielfaches der Ordnung, wodurch die lineare Abhängigkeit entsteht. Das folgende Lemma formalisiert dieses Resultat.
+Dies ergibt sich aus der Faktorisierung von $10 = 5 \cdot 2$. Die Differenz ${i_4 - i_2 = 7 - 2 = 5}$ entspricht dem ersten Faktor. Da alle Differenzen der Indizes in $J$ ein Vielfaches der $2$ sind, unterscheiden sich die Exponenten in den Zeilen 2 und 4 wieder um ein Vielfaches der Ordnung, wodurch die lineare Abhängigkeit entsteht. Das folgende Lemma formalisiert dieses Resultat.
 
 \begin{lemma} \label{lemma:equal-columns}
     Sei $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$. Seien weiter $I,J \subseteq \mathbb{Z}$ zwei Indexmengen und $a \in \field{p}[n]^\times$ mit der Ordnung $o = \ord{a} = v\cdot w$. Falls
@@ -54,17 +51,14 @@ Dies ergibt sich aus der Faktorisierung von $10 = 5 \cdot 2$. Die Differenz ${i_
     \begin{equation} \label{equation:two-equal}
         \exists \; j \neq j' \in J: \quad j = j' \bmod w
     \end{equation}
-    gelten, folgt
-    \begin{equation*}
-        (\det M_{IJ})(a) = 0.
-    \end{equation*}
+    gelten, folgt $(\det M_{IJ})(a) = 0$.
 \end{lemma}
 
 {
 \Crefname{equation}{Bedingung}{Bedingungen}
 
 \begin{proof}
-    Seien $j,j' \in J$ die Indizes, welche die obige \Cref{equation:two-equal} erfüllen. Im Folgenden wird gezeigt, dass die dazugehörigen Spalten in $M_{IJ}$ linear abhängig sind. Seien $j = (c + bw)$, $j' = (c + b'w)$ und $I = \{(d+l_1v),\dots,(d+l_kv)\}$. Die Spalten zu $j$ und $j'$ haben die Form
+    Seien $j,j' \in J$ die Indizes, welche die obige \Cref{equation:two-equal} erfüllen. Im Folgenden wird gezeigt, dass die dazugehörigen Spalten in $M_{IJ}(a)$ linear abhängig sind. Seien $j = (c + bw)$, $j' = (c + b'w)$ und $I = \{(d+l_1v),\dots,(d+l_kv)\}$ mit $c,b,b',d,l_1,\dots, l_k \in \mathbb{Z}$. Die Spalten zu $j$ und $j'$ haben die folgende Form:
     \begin{align*}
         \begin{pmatrix}
             a^{i_1j} & a^{i_1j'} \\
@@ -82,23 +76,19 @@ Dies ergibt sich aus der Faktorisierung von $10 = 5 \cdot 2$. Die Differenz ${i_
             a^{dc + dbw +l_kvc + l_kbvw} & a^{dc + db'w +l_kvc + l_kb'vw}
         \end{pmatrix}
     \end{align*}
-    Die konstanten Terme $a^{dc + dbw}$ und $a^{dc + db'w}$ können aus den Spalten geteilt werden, sodass verbleiben
+    Die konstanten Terme $a^{dc + dbw}$ und $a^{dc + db'w}$ können aus den Spalten geteilt werden. Da außerdem die Gleichung $a^{vw} = a^{o} = 1$ angewendet werden kann, verbleiben folgende äquivalente Spalten:
     \begin{equation*}
         \begin{pmatrix}
             a^{l_1vc} {a^{vw}}^{l_1b} & a^{l_1vc} {a^{vw}}^{l_1b'} \\
             \vdots & \vdots \\
             a^{l_kvc} {a^{vw}}^{l_kb} & a^{l_kvc} {a^{vw}}^{l_kb'}
-        \end{pmatrix}
-    \end{equation*}
-    Da $a^{vw} = a^{o} = 1$ gilt, verbleiben äquivalente Spalten.
-    \begin{equation*}
+        \end{pmatrix} =
         \begin{pmatrix}
             a^{l_1vc} & a^{l_1vc} \\
             \vdots & \vdots \\
             a^{l_kvc} & a^{l_kvc}
         \end{pmatrix}
     \end{equation*}
-
     Aus der linearen Abhängigkeit der beiden Spalten folgt $(\det M_{IJ})(a) = 0$.
 \end{proof}
 
@@ -109,21 +99,18 @@ Die \Cref{equation:all-equal}, dass alle Elemente einer Indexmenge in der selben
 \begin{satz} \label{satz:equal-columns-subs}
     Sei $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$. Seien weiter $I,J \subseteq \mathbb{Z}$ zwei Indexmengen und $a \in \field{p}[n]^\times$ mit der Ordnung $o = \ord{a} = v\cdot w$.
 
-    Falls eine Teilmenge $I' \subseteq I$ existiert, die \Cref{equation:all-equal} erfüllt und alle $J' \subseteq J$ mit $|J'| = |I'|$ \Cref{equation:two-equal} erfüllen, folgt
-    \begin{equation*}
-        (\det M_{IJ})(a) = 0
-    \end{equation*}
+    Falls eine Teilmenge $I' \subseteq I$ existiert, die \Cref{equation:all-equal} erfüllt und alle $J' \subseteq J$ mit $|J'| = |I'|$ \Cref{equation:two-equal} erfüllen, folgt $(\det M_{IJ})(a) = 0$.
 \end{satz}
 
 \begin{proof}
     Zur Bestimmung der Determinante wird eine Zeilenentwicklung über die Indizes $I'$ durchgeführt. 
 \begin{equation*}
-    (\det M_{IJ})(a) = \left( \sum_{\substack{J'\subseteq J:\\|J'| = |I'|}} (-1)^{\epsilon_{I'J'}} \left( \det M_{I'J'} \cdot \det M_{I\backslash I',J\backslash J'} \right) \right)(a) % \sum I' + \sum J'
+    (\det M_{IJ})(a) = \left( \sum_{\substack{J'\subseteq J:\\|J'| = |I'|}} (-1)^{\epsilon_{I'J'}} \left( \det M_{I'J'} \cdot \det M_{I\backslash I'\,J\backslash J'} \right) \right)(a) % \sum I' + \sum J'
 \end{equation*}
 Konkret hängen die Vorfaktoren $(-1)^{\epsilon_{I'J'}}$ von den Teilmengen $I'$ und $J'$ ab. Da $I'$ und alle $J'$ bereits die \Cref{equation:all-equal,equation:two-equal} erfüllen, kann \Cref{lemma:equal-columns} auf die Terme $\det M_{I'J'}$ angewendet werden. Somit ist jeder Summand gleich $0$ und die Aussage folgt.
 \end{proof}
 
-Sei weiterhin $a = 2 \in \field{11}$ mit der Ordnung $\ord{a} = 10$. Für ein Beispiel werden die Indexmengen $I = \{0,2,3,4\}$ und $J = \{0,2,5,7\}$ betrachtet, welche \Cref{lemma:equal-columns} nicht erfüllen. Da die Teilmenge $I\backslash\{3\}$ die \Cref{equation:all-equal} erfüllt, kann entlang der Zeile zum Exponenten $3$ entwickelt werden. Die für die Berechnung relevanten Submatrizen ergeben sich aus diesen Paarungen.
+Sei weiterhin $a = 2 \in \field{11}$ mit der Ordnung $\ord{a} = 10$. Für ein Beispiel werden die Indexmengen $I = \{0,2,3,4\}$ und $J = \{0,2,5,7\}$ betrachtet, welche \Cref{lemma:equal-columns} nicht erfüllen. Da die Teilmenge $I\backslash\{3\}$ die \Cref{equation:all-equal} für $v=2$ erfüllt, kann entlang der Zeile zum Exponenten $3$ entwickelt werden. Die für die Berechnung relevanten Submatrizen ergeben sich aus diesen Paarungen.
 
 \begin{align*}
     I_1=\{0,2,4\} \text{ und } J_1=\{2,5,7\}, \\
@@ -132,7 +119,7 @@ Sei weiterhin $a = 2 \in \field{11}$ mit der Ordnung $\ord{a} = 10$. Für ein Be
     I_4=\{0,2,4\} \text{ und } J_4=\{0,2,5\}.
 \end{align*}
 
-Diese erfüllen jeweils \Cref{equation:all-equal,equation:two-equal}, sodass \Cref{satz:equal-columns-subs} angewendet werden kann und $(\det M_{IJ})(a) = 0$ folgt.
+Die jeweiligen Teilmengen von $J$ erfüllen \Cref{equation:two-equal} für $w=5$, sodass \Cref{satz:equal-columns-subs} angewendet werden kann und $(\det M_{IJ})(a) = 0$ folgt.
 }
 
 \begin{comment}
