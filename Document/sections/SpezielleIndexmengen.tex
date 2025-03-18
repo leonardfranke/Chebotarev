@@ -1,12 +1,11 @@
 \section{Spezielle Indexmengen} \label{sec:spezielleIndexmengen}
 
-Im vorherigen Abschnitten wurden hinreichende Bedingungen zur Invertierbarkeit vorgestellt, die sich grundlegend auf die Struktur der Indexmengen und auf die Ordnungen der Körperelemente bezogen. In diesem Kapitel werden weitere quadratische Submatrizen von $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$ untersucht, deren Invertierbarkeit sich nicht über die gezeigten Sätze herleiten lässt.
+Im vorherigen Abschnitt wurden hinreichende Bedingungen zur Invertierbarkeit vorgestellt, die sich grundlegend auf die Struktur der Indexmengen und auf die Ordnungen der Körperelemente bezogen. In diesem Kapitel werden weitere quadratische Submatrizen von $M = \left( x^{ij} \right)_{i,j \in \mathbb{Z}}$ untersucht, deren Invertierbarkeit sich nicht über die gezeigten Sätze herleiten lässt.
 
 Zuerst werden Indexmengen mit zusammenhängenden Indizes betrachtet. Sei ohne Beschränkung der Allgemeinheit $I = \{0,\dots,k-1\}$ und $J \subseteq \mathbb{Z}$ gleich mächtig. Die Matrix $M_{IJ} \coloneqq \left( x^{ij} \right)_{i \in I,j \in J}$ entspricht dann der Vandermonde-Matrix $V_{(x^{j_1},\dots,x^{j_k})}$, deren Determinante bekannt ist. \cite{VandermondeDet}
 \begin{equation*}
     \det V_{(x^{j_1},\dots,x^{j_k})} = \prod_{1\leq v<w\leq k} (x^{j_v} - x^{j_w})
 \end{equation*}
-
 
 Damit $(\det V_{(x^{j_1},\dots,x^{j_k})})(a) = 0$ gilt, müssen demnach zwei Indizes in $J$ existieren, deren Differenz ein Vielfaches der Ordnung von $a$ entspricht. Dies ist unter anderem der Fall, wenn die Mächtigkeit der Indexmengen größer als die Ordnung von $a$ ist.
 
@@ -50,21 +49,21 @@ Für ein $a \in \field{p}[n]^\times$ ist die Submatrix $M_{IJ}$ somit genau dann
     \iff & {x^\delta}^2 + x^{\delta} = {x^{\gamma}}^2 + x^{\gamma} \label{equation:013}
 \end{align}
 
-Anders formuliert sind nun zwei Elemente $v_1 = a^\gamma$ und $v_2 = a^\delta$ gesucht, die $x^2 + x = m$ für ein festes $m \in \field{p}[n]$ lösen. Abhängig von der Charakteristik des Körpers existieren zwei unterschiedliche Lösungsformeln.
+Anders formuliert sind nun zwei Elemente $v_1 = a^\gamma$ und $v_2 = a^\delta$ gesucht, die $x^2 + x = m$ für ein festes $m \in \field{p}[n]$ lösen. Abhängig vom betrachteten Körper existieren zwei unterschiedliche Lösungsformeln.
 
 \begin{lemma}[{\cite[S. 4]{QuadEquCharNot2}}]
-    Sei $\charac(\field{p}[n]) \neq 2$. Die quadratische Gleichung $x^2 + x = m$ ist genau dann lösbar, wenn die Wurzel $\sqrt{2^{-2} + m}$ existiert. Die Lösungen lauten dann
+    Die quadratische Gleichung $x^2 + x = m$ über $\field{p}[n]$ mit $p\neq 2$ ist genau dann lösbar, wenn die Wurzel $\sqrt{2^{-2} + m}$ existiert. Die Lösungen lauten dann
     \begin{equation*}
         v_{1,2} = -2^{-1} \pm \sqrt{2^{-2} + m}.
     \end{equation*}
 \end{lemma}
 
 \begin{lemma}[{\cite[S. 140]{QuadEquChar2}}]
-    Sei $\charac(\field{p}[n]) = 2$. Die quadratische Gleichung $x^2 + x = m$ ist genau dann lösbar, wenn für die Spur $\Tr(m) = 0$ gilt. Die erste Lösung lautet dann
+    Die quadratische Gleichung $x^2 + x = m$ über $\field{2}[n]$ ist genau dann lösbar, wenn für die Spur $\Tr(m) = 0$ gilt. Die erste Lösung lautet dann
     \begin{equation*}
         v_1 = 1 + \sum_{k=1}^{n-1} m^{2^k}(\sum_{l=0}^{k-1} u^{2^l})
     \end{equation*}
-     für ein beliebiges $u \in \field{p}[n]$ mit $\Tr(u) = 1$. Die zweite Lösung ist $v_2 = v_1 + 1$.
+    für ein beliebiges $u \in \field{p}[n]$ mit $\Tr(u) = 1$. Die zweite Lösung ist $v_2 = v_1 + 1$.
 \end{lemma}
 
 Sofern die Lösungen $v_1$ und $v_2$ existieren, liefert ein gemeinsamer Erzeuger $a$ die gesuchten Exponenten $\gamma$ und $\delta$. Da die Potenzen $v_1 = a^\gamma$ und $v_2 = a^\delta$ \Cref{equation:013} lösen, ist $M_{IJ}$ mit $J = \{0,1,3\}$ und $J = \{0,\gamma,\delta\}$ für dieses $a$ nicht invertierbar.
@@ -130,7 +129,7 @@ Ein weiteres Beispiel betrachtet $\field{2}[3]$. Analog zeigt \Cref{table:sol_01
     y^2 &= y^2 \\
 \end{align*}
 Daraus folgt $(\det M_{IJ})(y+1) = 0$ für $I = \{0,1,3\}$ und $J = \{0,4,6\}$.
-Da die Gruppenordnung von $\field{2}[3]$ Primzahl ist, ist jedes Körperelement $a \notin \{0,1\}$ ein Erzeuger von der multiplikativen Gruppe $\field{2}[3]^\times$. Somit existiert für jedes dieser Elemente eine Indexmenge $J$, sodass $(\det M_{IJ})(a) = 0$ gilt.
+Da die Gruppenordnung von $\field{2}[3]$ Primzahl ist, ist jedes Körperelement $a \notin \{0,1\}$ ein Erzeuger der multiplikativen Gruppe $\field{2}[3]^\times$. Somit existiert für jedes dieser Elemente eine Indexmenge $J$, sodass $(\det M_{IJ})(a) = 0$ gilt.
 
 {\renewcommand{\arraystretch}{1.5}
 \begin{table}
