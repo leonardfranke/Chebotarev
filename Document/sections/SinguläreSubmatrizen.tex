@@ -110,13 +110,13 @@ Die \Cref{equation:all-equal}, dass alle Elemente einer Indexmenge in derselben 
 Konkret hängen die Vorfaktoren $(-1)^{\epsilon_{I'J'}}$ von den Teilmengen $I'$ und $J'$ ab. Da $I'$ und alle $J'$ bereits die \Cref{equation:all-equal,equation:two-equal} erfüllen, kann \Cref{lemma:equal-columns} auf die Terme $\det M_{I'J'}$ angewendet werden. Somit ist jeder Summand gleich $0$ und die Aussage folgt.
 \end{proof}
 
-Sei weiterhin $a = 2 \in \field{11}$ mit der Ordnung $\ord{a} = 10$. Für ein Beispiel werden die Indexmengen $I = \{0,2,3,4\}$ und $J = \{0,2,5,7\}$ betrachtet, welche \Cref{lemma:equal-columns} nicht erfüllen. Da die Teilmenge $I\backslash\{3\}$ die \Cref{equation:all-equal} für $v=2$ erfüllt, kann entlang der Zeile zum Exponenten $3$ entwickelt werden. Die für die Berechnung relevanten Submatrizen ergeben sich aus diesen Paarungen.
+Sei weiterhin $a = 2 \in \field{11}$ mit der Ordnung $\ord{a} = 10$. Für ein Beispiel werden die Indexmengen $I = \{0,2,3,4\}$ und $J = \{0,2,5,7\}$ betrachtet, welche \Cref{lemma:equal-columns} nicht erfüllen. Da die Teilmenge $I\backslash\{3\}$ die \Cref{equation:all-equal} für $v=2$ erfüllt, kann entlang der Zeile zum Exponenten $3$ entwickelt werden. Die für die Berechnung relevanten Submatrizen ergeben sich aus diesen Paarungen:
 
 \begin{align*}
-    I_1=\{0,2,4\} \text{ und } J_1=\{2,5,7\}, \\
-    I_2=\{0,2,4\} \text{ und } J_2=\{0,5,7\}, \\
-    I_3=\{0,2,4\} \text{ und } J_3=\{0,2,7\}, \\
-    I_4=\{0,2,4\} \text{ und } J_4=\{0,2,5\}.
+    I_1=\{0,2,4\} \text{ und } J_1=\{2,5,7\} \\
+    I_2=\{0,2,4\} \text{ und } J_2=\{0,5,7\} \\
+    I_3=\{0,2,4\} \text{ und } J_3=\{0,2,7\} \\
+    I_4=\{0,2,4\} \text{ und } J_4=\{0,2,5\}
 \end{align*}
 
 Die jeweiligen Teilmengen von $J$ erfüllen \Cref{equation:two-equal} für $w=5$, sodass \Cref{satz:equal-columns-subs} angewendet werden kann und $(\det M_{IJ})(a) = 0$ folgt.

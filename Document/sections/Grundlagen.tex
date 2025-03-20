@@ -24,7 +24,7 @@ Sei zum Beispiel $n = 4$. Dann gelten folgende Darstellungen:
 Die Zahl $r$ wird als der \emph{Rest} von $a$ modulo $n$ bezeichnet. Im Folgenden wird dies mit $r = a \bmod n$ abgekürzt. Die Abbildung $\varrho_n : \mathbb{Z} \rightarrow \mathbb{Z}_n$, welche jeder ganzen Zahl ihren Rest modulo $n$ zuordnet, ist die \emph{Restabbildung}. Mit ihr kann aus der Menge $\mathbb{Z}_n$ ein Ring konstruiert werden.
 
 \begin{satz}[{\cite[S. 9]{Kurzweil}}]
-    Sei $n \in \mathbb{N}$. Die Menge $\mathbb{Z}_n$ zusammen mit der Multiplikation $a \otimes b = \varrho_n(a \cdot b)$ und der Addition $a \oplus b = \varrho_n(a + b)$ bilden einen Ring. Dieser wird als Restklassenring modulo $n$ bezeichnet.
+    Sei $n \in \mathbb{N}$. Die Menge $\mathbb{Z}_n$ zusammen mit der Multiplikation ${a \otimes b = \varrho_n(a \cdot b)}$ und der Addition $a \oplus b = \varrho_n(a + b)$ bilden einen Ring. Dieser wird als Restklassenring modulo $n$ bezeichnet.
 \end{satz}
 
 Die Operationen im Restklassenring nutzen die von den ganzen Zahlen bekannte Addition und Multiplikation mit anschließender Modulodivision. \Cref{table:tableZ4,table:tableZ5} zeigen die Additions- und Multiplikationstafeln für $n=4$ und $n=5$. In diesen können einige der Ringaxiome verifiziert werden. Zum Beispiel existieren jeweils die neutralen Elemente $0$ und $1$. Außerdem besitzt jedes Element ein additiv Inverses. Bezüglich der Multiplikation existieren jedoch nicht immer inverse Elemente. Dies zeigt, dass $\mathbb{Z}_n$ im Allgemeinen keinen Körper bildet. Der folgende Satz gibt an, für welche natürlichen Zahlen das dennoch der Fall ist.
@@ -179,7 +179,7 @@ Da im Hauptteil dieser Arbeit Matrizen der Form $\left( x^{ij} \right)_{i \in I,
     Sei $G$ Gruppe. $G$ heißt zyklische Gruppe, falls ein $a \in G$ existiert, sodass $G$ nur aus Potenzen von $a$ besteht, also $G = \langle a \rangle \coloneqq \{ a^i \mid i \in \mathbb{Z}\}$ gilt. Das Element $a$ heißt dann \emph{Erzeuger} von $G$.
 \end{definition}
 
-Im Folgenden wird die Gruppe $\field{7}^\times$ betrachtet. Die Mengen $\langle a \rangle$ sehen wie folgt aus.
+Im Folgenden wird die Gruppe $\field{7}^\times$ betrachtet. Die Mengen $\langle a \rangle$ sehen wie folgt aus:
 
 \begin{align*}
     \langle 1 \rangle &= \{ 1\} \\
